@@ -1,0 +1,542 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Chatbot Evaluation Framework (CEF)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Spectral:wght@400;500;600&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#F6F7F9; --surface:#FFFFFF; --ink:#181C24; --muted:#5B6470;
+    --line:#E2E5EA; --primary:#1B2436; --accent:#0F766E; --accent-soft:#E6F1F0;
+    --adapt-bg:#FFF8E6; --adapt-line:#E0A800; --adapt-ink:#7a5a00;
+    --serif:'Spectral',Georgia,serif; --sans:'Inter',system-ui,sans-serif; --mono:'IBM Plex Mono',monospace;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{background:var(--bg);color:var(--ink);font-family:var(--sans);line-height:1.62;-webkit-font-smoothing:antialiased}
+  .wrap{max-width:960px;margin:0 auto;padding:0 24px}
+
+  header{border-bottom:1px solid var(--line);background:var(--surface)}
+  .head-inner{padding:42px 0 28px}
+  .eyebrow{font-family:var(--mono);font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--accent)}
+  h1{font-family:var(--serif);font-weight:600;font-size:clamp(30px,5vw,46px);line-height:1.12;margin:10px 0 12px;color:var(--primary)}
+  .lede{font-size:18px;color:var(--muted);max-width:62ch}
+
+  /* primary numbered rail / tabs */
+  nav.rail{position:sticky;top:0;z-index:10;background:var(--surface);border-bottom:1px solid var(--line)}
+  .rail-inner{display:flex;gap:4px;overflow-x:auto;padding:8px 0;scrollbar-width:thin}
+  .tab{flex:0 0 auto;display:flex;align-items:center;gap:10px;background:none;border:1px solid transparent;border-radius:8px;padding:10px 14px;cursor:pointer;font-family:var(--sans);font-size:14px;color:var(--muted);white-space:nowrap;transition:background .15s,color .15s,border-color .15s}
+  .tab .num{font-family:var(--mono);font-size:12px;color:var(--accent);border:1px solid var(--line);border-radius:5px;padding:2px 7px;transition:.15s}
+  .tab:hover{background:var(--bg);color:var(--ink)}
+  .tab[aria-selected="true"]{background:var(--accent-soft);color:var(--primary);border-color:#CFE3E1}
+  .tab[aria-selected="true"] .num{background:var(--accent);color:#fff;border-color:var(--accent)}
+  .tab:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+
+  main{padding:40px 0 80px}
+  .panel{display:none;animation:fade .25s ease}
+  .panel.active{display:block}
+  @keyframes fade{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+
+  h2{font-family:var(--serif);font-weight:600;font-size:28px;color:var(--primary);margin-bottom:6px}
+  .sub{font-family:var(--mono);font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--accent);margin-bottom:18px}
+  h3{font-family:var(--sans);font-weight:600;font-size:18px;margin:30px 0 10px;color:var(--primary)}
+  h4{font-family:var(--sans);font-weight:600;font-size:15px;margin:22px 0 8px;color:var(--primary)}
+  p{margin-bottom:14px;max-width:70ch}
+  ul,ol{margin:0 0 14px 22px;max-width:70ch}
+  li{margin-bottom:6px}
+  a{color:var(--accent)}
+
+  /* secondary sub-tabs */
+  .subnav{display:flex;gap:2px;flex-wrap:wrap;border-bottom:1px solid var(--line);margin:6px 0 26px}
+  .subtab{background:none;border:none;border-bottom:2px solid transparent;padding:9px 14px;margin-bottom:-1px;cursor:pointer;font-family:var(--sans);font-size:14px;color:var(--muted);transition:.15s}
+  .subtab:hover{color:var(--ink)}
+  .subtab[aria-selected="true"]{color:var(--primary);border-bottom-color:var(--accent);font-weight:600}
+  .subtab:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+  .subpanel{display:none;animation:fade .2s ease}
+  .subpanel.active{display:block}
+
+  /* tables */
+  .tablewrap{overflow-x:auto;margin:0 0 18px;border:1px solid var(--line);border-radius:10px}
+  table{border-collapse:collapse;width:100%;font-size:14.5px;background:var(--surface)}
+  th,td{text-align:left;padding:11px 14px;border-bottom:1px solid var(--line);vertical-align:top}
+  thead th{background:#F0F2F5;font-family:var(--sans);font-weight:600;color:var(--primary);font-size:13px}
+  tbody tr:last-child td{border-bottom:none}
+  td.id,th.id{font-family:var(--mono);font-size:12.5px;color:var(--accent);width:1%;white-space:nowrap}
+
+  /* callouts */
+  .callout{border-radius:10px;padding:14px 18px;margin:0 0 18px;font-size:14.5px;max-width:70ch}
+  .callout p{margin:0;max-width:none}
+  .note{background:#EEF4FF;border-left:3px solid #3B6FD4;color:#243b66}
+  .tip{background:#EAF7F0;border-left:3px solid #1B9C6B;color:#155c40}
+  .adapt{background:var(--adapt-bg);border-left:3px solid var(--adapt-line);color:var(--adapt-ink)}
+  .callout .k{font-family:var(--mono);font-size:11px;letter-spacing:.08em;text-transform:uppercase;display:block;margin-bottom:4px;opacity:.85}
+  .ph{background:var(--adapt-bg);border-radius:3px;padding:1px 5px;font-style:italic;color:var(--adapt-ink)}
+
+  blockquote{border-left:3px solid var(--accent);background:var(--surface);border-radius:0 8px 8px 0;padding:14px 18px;margin:0 0 16px;font-family:var(--serif);font-size:17px;color:var(--primary);max-width:70ch}
+
+  .measures{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:14px;margin:18px 0}
+  .measure{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:16px 18px}
+  .measure .k{font-family:var(--mono);font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:var(--accent)}
+  .measure .v{font-family:var(--serif);font-size:19px;color:var(--primary);margin-top:4px}
+
+  figure{margin:8px 0 8px}
+  figure img{width:100%;border:1px solid var(--line);border-radius:10px;display:block}
+  .imgfallback{display:none;background:#EEF1F4;border:1px dashed #C7CDD6;border-radius:10px;padding:38px 20px;text-align:center;color:var(--muted);font-size:14px}
+  figcaption{font-size:13px;color:var(--muted);margin-top:8px}
+
+  /* checklist */
+  .check{list-style:none;margin-left:0}
+  .check li{display:flex;gap:12px;align-items:flex-start;padding:8px 0;border-bottom:1px dashed var(--line)}
+  .check input{margin-top:5px;width:16px;height:16px;accent-color:var(--accent);flex:0 0 auto;cursor:pointer}
+  .check label{cursor:pointer}
+
+  code{font-family:var(--mono);font-size:13px;background:var(--surface);border:1px solid var(--line);border-radius:5px;padding:2px 6px}
+  pre{background:var(--primary);color:#E7EBF2;border-radius:10px;padding:18px;overflow-x:auto;margin:0 0 18px;font-size:13px}
+  pre code{background:none;border:none;color:inherit;padding:0}
+
+  footer{border-top:1px solid var(--line);padding:26px 0;color:var(--muted);font-size:14px}
+
+  @media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}html{scroll-behavior:auto}}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap head-inner">
+    <div class="eyebrow">Practitioner's guide</div>
+    <h1>Chatbot Evaluation Framework</h1>
+    <p class="lede">A reusable, mixed-methods instrument for evaluating a domain-specific advisory chatbot from the user's perspective, transferable across legal, tax, medical, financial, and public administration services.</p>
+  </div>
+</header>
+
+<nav class="rail" aria-label="Guide sections">
+  <div class="wrap">
+    <div class="rail-inner" role="tablist">
+      <button class="tab" role="tab" aria-selected="true"  aria-controls="p-overview"  id="t-overview"><span class="num">00</span>Overview</button>
+      <button class="tab" role="tab" aria-selected="false" aria-controls="p-checklist" id="t-checklist"><span class="num">✓</span>Checklist</button>
+      <button class="tab" role="tab" aria-selected="false" aria-controls="p-prepare"   id="t-prepare"><span class="num">01</span>Prepare</button>
+      <button class="tab" role="tab" aria-selected="false" aria-controls="p-session"   id="t-session"><span class="num">02</span>Run a session</button>
+      <button class="tab" role="tab" aria-selected="false" aria-controls="p-analyze"   id="t-analyze"><span class="num">03</span>Analyze</button>
+      <button class="tab" role="tab" aria-selected="false" aria-controls="p-cite"      id="t-cite"><span class="num">+</span>Use &amp; cite</button>
+    </div>
+  </div>
+</nav>
+
+<main class="wrap">
+
+  <!-- ================= OVERVIEW ================= -->
+  <section class="panel active" id="p-overview" role="tabpanel" aria-labelledby="t-overview">
+    <h2>The framework</h2>
+    <div class="sub">What it measures</div>
+    <p>The CEF captures three main dimensions, supported by two further signals: perceived mental workload and users' information needs. It combines quantitative ratings with a qualitative interview in a single embedded mixed-methods session.</p>
+    <div class="measures">
+      <div class="measure"><div class="k">Dimension 01</div><div class="v">Usability</div></div>
+      <div class="measure"><div class="k">Dimension 02</div><div class="v">Perceived trustworthiness</div></div>
+      <div class="measure"><div class="k">Dimension 03</div><div class="v">Work integration</div></div>
+    </div>
+    <div class="callout note"><p>Run the components in the order below, recording each session via video conference or in person. Each session lasts about 40 to 60 minutes per participant.</p></div>
+
+    <h3>Study procedure</h3>
+    <figure>
+      <img src="assets/images/study-procedure.png" alt="Study procedure" onerror="this.style.display='none';this.nextElementSibling.style.display='block'">
+      <div class="imgfallback">Study procedure diagram — add <code>assets/images/study-procedure.png</code></div>
+      <figcaption>Study procedure.</figcaption>
+    </figure>
+
+    <h3>The five components</h3>
+    <div class="tablewrap">
+      <table>
+        <thead><tr><th>Component</th><th>Items</th><th>Focus</th></tr></thead>
+        <tbody>
+          <tr><td>Pre-task rating</td><td>2</td><td>Prior knowledge, task-solving confidence</td></tr>
+          <tr><td>Tasks</td><td>2</td><td>Realistic advisory scenarios</td></tr>
+          <tr><td>Post-task rating</td><td>2</td><td>Helpfulness of chatbot output</td></tr>
+          <tr><td>Online survey</td><td>28</td><td>Workload (RTLX), Usability (CUQ), Perceived Trustworthiness</td></tr>
+          <tr><td>Interview</td><td>18</td><td>Perceived Trustworthiness, Integration into Work Routine, Areas for Future Development, Information Needs, Prior Experience and Chatbot Use</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- ================= CHECKLIST ================= -->
+  <section class="panel" id="p-checklist" role="tabpanel" aria-labelledby="t-checklist">
+    <h2>Quick-start checklist</h2>
+    <div class="sub">Prepare once · run per participant · analyze</div>
+
+    <h3>Prepare and adapt</h3>
+    <ul class="check">
+      <li><input type="checkbox" id="c1"><label for="c1">Write two short advisory tasks that reflect real work in your domain, one routine and one more complex, and involve domain experts so the scenarios are realistic.</label></li>
+      <li><input type="checkbox" id="c2"><label for="c2">Insert your specific domain in the final item of the demographics form.</label></li>
+      <li><input type="checkbox" id="c3"><label for="c3">Adapt the study introduction with your organization and domain.</label></li>
+      <li><input type="checkbox" id="c4"><label for="c4">Insert your chatbot's name, the relevant role, and domain references into the interview questions and prior-experience questions.</label></li>
+      <li><input type="checkbox" id="c5"><label for="c5">Download the CUQ scoring tool from the authors' website.</label></li>
+      <li><input type="checkbox" id="c6"><label for="c6">Set up the survey on an online platform with the three instruments in order: RTLX, CUQ, and Perceived Trustworthiness.</label></li>
+      <li><input type="checkbox" id="c7"><label for="c7">Arrange recording for each session, via video conference or in person.</label></li>
+    </ul>
+
+    <h3>Run each session</h3>
+    <ul class="check">
+      <li><input type="checkbox" id="r1"><label for="r1">Collect the demographics form before the session begins.</label></li>
+      <li><input type="checkbox" id="r2"><label for="r2">Give the introduction to the study and its procedure.</label></li>
+      <li><input type="checkbox" id="r3"><label for="r3">Let the participant read both tasks.</label></li>
+      <li><input type="checkbox" id="r4"><label for="r4">Record one task-solving confidence rating per task, before the interaction.</label></li>
+      <li><input type="checkbox" id="r5"><label for="r5">Let the participant work through both tasks with the chatbot, without guidance.</label></li>
+      <li><input type="checkbox" id="r6"><label for="r6">Record one helpfulness rating per task, immediately after the interaction.</label></li>
+      <li><input type="checkbox" id="r7"><label for="r7">Administer the survey (RTLX, CUQ, Perceived Trustworthiness).</label></li>
+      <li><input type="checkbox" id="r8"><label for="r8">Conduct the semi-structured interview, including the XAI Novice Question Bank selection and questions about prior experience and chatbot use.</label></li>
+    </ul>
+
+    <h3>Analyze the data</h3>
+    <ul class="check">
+      <li><input type="checkbox" id="a1"><label for="a1">Read RTLX at the subscale level and compare against reference values.</label></li>
+      <li><input type="checkbox" id="a2"><label for="a2">Score the CUQ from 0 to 100 with the scoring tool, and treat results comparatively.</label></li>
+      <li><input type="checkbox" id="a3"><label for="a3">Analyze Perceived Trustworthiness subscale by subscale, combining it with qualitative data where useful.</label></li>
+      <li><input type="checkbox" id="a4"><label for="a4">Code the interviews with thematic coding analysis in a tool such as ATLAS.ti, inductively for emerging themes and deductively for information needs.</label></li>
+      <li><input type="checkbox" id="a5"><label for="a5">Analyze information about the participants' prior experience and chatbot use.</label></li>
+    </ul>
+  </section>
+
+  <!-- ================= PREPARE ================= -->
+  <section class="panel" id="p-prepare" role="tabpanel" aria-labelledby="t-prepare">
+    <h2>Prepare and adapt</h2>
+    <div class="sub">Complete once, before any sessions</div>
+
+    <div class="subnav" role="tablist" aria-label="Prepare steps">
+      <button class="subtab" role="tab" aria-selected="true"  aria-controls="s-demo"   id="st-demo">Demographics form</button>
+      <button class="subtab" role="tab" aria-selected="false" aria-controls="s-intro"  id="st-intro">Study introduction</button>
+      <button class="subtab" role="tab" aria-selected="false" aria-controls="s-tasks"  id="st-tasks">Tasks</button>
+    </div>
+
+    <div class="subpanel active" id="s-demo" role="tabpanel" aria-labelledby="st-demo">
+      <p>Collect this form before the session begins. It records the background, expertise, and experience that let you interpret each participant's later ratings and interview answers.</p>
+      <div class="callout adapt"><span class="k">Adapt for your domain</span><p>Adapt the final item by inserting your specific domain so that experience is captured at the right level of detail.</p></div>
+      <div class="tablewrap">
+        <table>
+          <thead><tr><th>Question</th><th>Type</th><th>Categories</th></tr></thead>
+          <tbody>
+            <tr><td>First Name</td><td>open-ended</td><td></td></tr>
+            <tr><td>Last Name</td><td>open-ended</td><td></td></tr>
+            <tr><td>How old are you? Please indicate your age.</td><td>open-ended</td><td></td></tr>
+            <tr><td>Which gender do you identify with?</td><td>categorical</td><td>"male", "female", "non-binary", "other gender", "don't want to answer"</td></tr>
+            <tr><td>If you selected "other gender" in the previous question, please specify below.</td><td>open-ended</td><td></td></tr>
+            <tr><td>What is your highest educational qualification?</td><td>categorical</td><td>"No compulsory school certificate", "Compulsory school certificate", "High school diploma", "University of Applied Sciences", "University", "Master craftsman's diploma", "My degree is not listed."</td></tr>
+            <tr><td>In which subject area or professional field do you have expertise?</td><td>open-ended</td><td></td></tr>
+            <tr><td>What is your job title?</td><td>open-ended</td><td></td></tr>
+            <tr><td>How many years of work experience do you have in your field?</td><td>open-ended</td><td></td></tr>
+            <tr><td>How many years of work experience do you have in the field of <span class="ph">[insert specific domain area]</span>?</td><td>open-ended</td><td></td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="subpanel" id="s-intro" role="tabpanel" aria-labelledby="st-intro">
+      <p>Open the session by explaining its purpose and procedure in your own words, putting the participant at ease. Cover what the study examines, the three parts they will complete, and the fact that their personal impressions matter. The following wording serves as a guide:</p>
+      <blockquote>"Our study analyzes the usability of the <span class="ph">[insert organization]</span>'s <span class="ph">[insert domain]</span> chatbot, and your personal impressions are important to us. In the first part of the study, you interact with the <span class="ph">[insert domain]</span> chatbot to complete a task using its answers. Then we will ask you to fill out a short questionnaire. Finally, we will discuss your personal impressions of the chatbot."</blockquote>
+      <p>Once you have given this introduction, present the tasks.</p>
+    </div>
+
+    <div class="subpanel" id="s-tasks" role="tabpanel" aria-labelledby="st-tasks">
+      <p>The tasks are the one component you author yourself, because they must reflect real work in your domain. Build two short scenarios framed as an incoming client request, and ask the participant to respond as they would in everyday practice. Vary the difficulty between the two so the evaluation captures both routine and more complex queries.</p>
+      <div class="callout tip"><span class="k">Tip</span><p>Involve domain experts when creating the tasks, so the examples are realistic and reflect what users of the chatbot actually encounter in their everyday work.</p></div>
+      <div class="callout adapt"><span class="k">Adapt for your domain</span><p>Replace the email content and the bot name (<code>XY bot</code>) with scenarios from your own domain.</p></div>
+
+      <h3>Task 1 — simpler inquiry</h3>
+      <p><strong>Situation:</strong> Imagine that a customer has sent you the following email. Use the <strong>XY bot</strong> to help you compose an appropriate reply. Work as you would in a real work situation.</p>
+      <blockquote><strong>Subject:</strong> Home office for employee tax assessment<br><br>Dear Sir or Madam,<br><br>I hope you can help me with a few questions about our taxes. My husband and I are both working, and we have some expenses that we would like to claim for tax purposes. I currently work from my home office quite a lot and last year I spent around €2,000 on new equipment (laptop, mouse, headset, etc.) and furniture for my home office. Can I claim these items in full as income-related expenses?<br><br>Thank you very much for your help!<br><br><em>Anonymized name</em></blockquote>
+      <p><strong>Task:</strong> Create a complete reply email or text that you would use in your everyday work to respond to the inquiry. Once the participant is satisfied with the result, you can begin the interview.</p>
+
+      <h3>Task 2 — more demanding inquiry</h3>
+      <p><strong>Situation:</strong> Imagine that a customer has sent you the following email. Use the <strong>XY bot</strong> to help you compose an appropriate reply. Work as you would in a real work situation.</p>
+      <blockquote><strong>Subject:</strong> Income in [country 1 (anonymized)] and child support<br><br>Dear Sir or Madam,<br><br>I am writing to you because I am in a somewhat complex situation. I live in [city in country 2] and work for a company as normal. In addition, however, I work as a freelance consultant for a company in [country 1]. I no longer have a residence in [country 1] and will perform this consulting work exclusively 100% remotely from [country 2].<br><br>I am not sure how this will affect my taxes. Where do I have to pay tax on my salary now? In [country 2], right? But do I also have to pay taxes in [country 1]? Another issue concerns my two minor children (aged 6 and 12). One lives with my first ex-wife in [city in country 1] and my second child lives in [country 3] with my second ex-wife. I pay a total of €1,000 in child support each month. Where can I claim this on my tax return?<br><br>Kind regards<br><br><em>Anonymized name</em></blockquote>
+      <p><strong>Task:</strong> Create a complete reply email or text that you would use in your everyday work to respond to the inquiry. Once the participant is satisfied with the result, you can begin the interview.</p>
+    </div>
+  </section>
+
+  <!-- ================= RUN A SESSION ================= -->
+  <section class="panel" id="p-session" role="tabpanel" aria-labelledby="t-session">
+    <h2>Run a session</h2>
+    <div class="sub">Repeat for each participant</div>
+
+    <div class="subnav" role="tablist" aria-label="Session steps">
+      <button class="subtab" role="tab" aria-selected="true"  aria-controls="s-during"    id="st-during">During the session</button>
+      <button class="subtab" role="tab" aria-selected="false" aria-controls="s-survey"    id="st-survey">Survey</button>
+      <button class="subtab" role="tab" aria-selected="false" aria-controls="s-interview" id="st-interview">Interview</button>
+    </div>
+
+    <!-- during -->
+    <div class="subpanel active" id="s-during" role="tabpanel" aria-labelledby="st-during">
+      <h3>Rating task-solving confidence</h3>
+      <p>Taken <strong>before</strong> the chatbot interaction, this rating records how confident the participant feels solving the task unaided. It establishes a baseline that later helps you judge how much the chatbot contributed. Collect one rating per task. Use a 5-point Likert scale, explaining that "1" marks the lowest and "5" the highest point, then ask:</p>
+      <blockquote>"How confident are you that you can solve the problem on your own with your current knowledge and without additional support?"</blockquote>
+
+      <h3>Chatbot interaction</h3>
+      <p>Have the participant work through both tasks using the chatbot, responding as they would in everyday practice. Let them interact freely without guidance, so the session reflects natural use rather than a guided demonstration. Record the interaction, and move on once the participant is satisfied with their response to each task.</p>
+
+      <h3>Rating chatbot output</h3>
+      <p>Taken <strong>immediately after</strong> the two tasks are solved, this rating captures how helpful the participant found the chatbot's responses. Use a 5-point Likert scale from 1 to 5, then ask:</p>
+      <blockquote>"How helpful did you find the chatbot's responses for solving the problem?"</blockquote>
+      <p>Collect it separately for each task so you can relate perceived helpfulness to task difficulty.</p>
+    </div>
+
+    <!-- survey -->
+    <div class="subpanel" id="s-survey" role="tabpanel" aria-labelledby="st-survey">
+      <p>The survey bundles three instruments completed right after the interaction. Administer them on your survey platform in this order, before the interview begins.</p>
+
+      <h3>RTLX (perceived mental workload)</h3>
+      <p>Measures perceived mental workload across six subscales (0–100) using a slider scale with 20 intervals.</p>
+      <div class="tablewrap">
+        <table>
+          <thead><tr><th>Subscale</th><th>Endpoints</th><th>Description</th></tr></thead>
+          <tbody>
+            <tr><td>Mental Demand</td><td>Low/High</td><td>How much mental and perceptual activity was required?</td></tr>
+            <tr><td>Physical Demand</td><td>Low/High</td><td>How much physical activity was required?</td></tr>
+            <tr><td>Temporal Demand</td><td>Low/High</td><td>How much time pressure did you feel?</td></tr>
+            <tr><td>Performance</td><td>Good/Poor</td><td>How successful do you think you were?</td></tr>
+            <tr><td>Effort</td><td>Low/High</td><td>How hard did you have to work to accomplish your level of performance?</td></tr>
+            <tr><td>Frustration</td><td>Low/High</td><td>How insecure, discouraged, irritated, stressed, and annoyed were you?</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="callout tip"><span class="k">Tip</span><p>An overall score can be obtained by averaging the six ratings, but for chatbot evaluation it is more informative to read the subscales individually, since dimensions such as physical demand may be affected by the study set-up. Compare against published reference values.</p></div>
+
+      <h3>Chatbot Usability Questionnaire (CUQ)</h3>
+      <p>Measures usability specifically for chatbots through 16 positively and negatively worded items on a 5-point Likert scale from "strongly disagree" to "strongly agree". Responses convert into a single score from 0 to 100 using the authors' calculation tool.</p>
+      <div class="callout note"><p>Download the Excel scoring tool from the <a href="https://www.ulster.ac.uk/research/topic/computer-science/artificial-intelligence/projects/cuq" target="_blank" rel="noopener">Ulster University CUQ project page</a>. No general CUQ benchmark exists yet, so use the score only for comparison.</p></div>
+      <div class="tablewrap">
+        <table>
+          <thead><tr><th class="id">ID</th><th>Question</th></tr></thead>
+          <tbody>
+            <tr><td class="id">Q1</td><td>The chatbot's personality was realistic and engaging.</td></tr>
+            <tr><td class="id">Q2</td><td>The chatbot seemed too robotic.</td></tr>
+            <tr><td class="id">Q3</td><td>The chatbot was welcoming during initial setup.</td></tr>
+            <tr><td class="id">Q4</td><td>The chatbot seemed very unfriendly.</td></tr>
+            <tr><td class="id">Q5</td><td>The chatbot explained its scope and purpose well.</td></tr>
+            <tr><td class="id">Q6</td><td>The chatbot gave no indication as to its purpose.</td></tr>
+            <tr><td class="id">Q7</td><td>The chatbot was easy to navigate.</td></tr>
+            <tr><td class="id">Q8</td><td>It would be easy to get confused when using the chatbot.</td></tr>
+            <tr><td class="id">Q9</td><td>The chatbot understood me well.</td></tr>
+            <tr><td class="id">Q10</td><td>The chatbot failed to recognise a lot of my inputs.</td></tr>
+            <tr><td class="id">Q11</td><td>Chatbot responses were useful, appropriate and informative.</td></tr>
+            <tr><td class="id">Q12</td><td>Chatbot responses were not relevant.</td></tr>
+            <tr><td class="id">Q13</td><td>The chatbot coped well with any errors or mistakes.</td></tr>
+            <tr><td class="id">Q14</td><td>The chatbot seemed unable to handle any errors.</td></tr>
+            <tr><td class="id">Q15</td><td>The chatbot was very easy to use.</td></tr>
+            <tr><td class="id">Q16</td><td>The chatbot was very complex.</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h3>Perceived trustworthiness</h3>
+      <p>Six items capture how far participants trust and feel comfortable relying on the chatbot, on a 5-point Likert scale. Two items address general attitudes toward AI, which helps you separate trust in the chatbot from broader feelings about the technology.</p>
+      <div class="tablewrap">
+        <table>
+          <thead><tr><th>Question</th></tr></thead>
+          <tbody>
+            <tr><td>I find the chatbot's answers helpful.</td></tr>
+            <tr><td>I trust the chatbot's answers.</td></tr>
+            <tr><td>I think the chatbot's answers seem correct.</td></tr>
+            <tr><td>I enjoy working with the chatbot.</td></tr>
+            <tr><td>I feel comfortable incorporating artificial intelligence into my work.</td></tr>
+            <tr><td>I generally have negative feelings toward artificial intelligence.</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- interview -->
+    <div class="subpanel" id="s-interview" role="tabpanel" aria-labelledby="st-interview">
+      <p>The interview gathers the qualitative depth that is combined with the survey scores. Questions are grouped by dimension so you can connect what participants say back to their ratings. Treat the wording as a guide, and follow up wherever a participant raises something useful.</p>
+      <div class="callout adapt"><span class="k">Adapt for your domain</span><p>Insert your chatbot's name, the relevant role, and domain references where marked before the session.</p></div>
+
+      <h3>Interview questions</h3>
+      <div class="tablewrap">
+        <table>
+          <thead><tr><th>Question</th><th>Dimension</th></tr></thead>
+          <tbody>
+            <tr><td>How much would you trust the chatbot with <span class="ph">[insert type of professional decision, e.g., legal, medical, financial]</span>?</td><td>Perceived Trustworthiness</td></tr>
+            <tr><td>How high do you estimate the risk of the chatbot providing incorrect information?</td><td>Perceived Trustworthiness</td></tr>
+            <tr><td>In what situations can you imagine using this chatbot in your work (as a <span class="ph">[insert role, e.g., tax law expert]</span>)?</td><td>Integration into Work Routine</td></tr>
+            <tr><td>How could this chatbot make your work more effective?</td><td>Integration into Work Routine</td></tr>
+            <tr><td>Could you imagine using this chatbot regularly in your work in the future? Why?</td><td>Integration into Work Routine</td></tr>
+            <tr><td>Which tasks do you consider unsuitable for this chatbot to perform? Why?</td><td>Integration into Work Routine</td></tr>
+            <tr><td>What (additional) background information should the chatbot be able to "understand" so that its responses appear well-informed?</td><td>Areas for Future Development</td></tr>
+            <tr><td>Would you prefer the chatbot to respond using both <span class="ph">[insert domain]</span> terminology as well as everyday language? Why?</td><td>Areas for Future Development</td></tr>
+            <tr><td>How would you feel if the chatbot flagged certain responses for risk reasons (e.g., ethical reasons, data protection)?</td><td>Areas for Future Development</td></tr>
+            <tr><td>If you could improve the chatbot in any way, what changes would you make?</td><td>Areas for Future Development</td></tr>
+            <tr><td>How helpful do you find the documents linked in the bot's responses? What do you like (or dislike) about them?</td><td>Areas for Future Development</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h3>Adapted XAI Novice Question Bank</h3>
+      <p>Surfaces participants' information needs, meaning what they would want to know in order to understand and trust the chatbot. Show the participant the full set of questions and ask:</p>
+      <blockquote>"Please select at least 3 questions that would help you better understand and use the chatbot. Why did you choose these questions?"</blockquote>
+      <p>The selections, grouped into context, usage, data, and specifications, reveal where participants' information needs lie.</p>
+
+      <h4>Chatbot context</h4>
+      <div class="tablewrap"><table><thead><tr><th class="id">ID</th><th>Question</th></tr></thead><tbody>
+        <tr><td class="id">K1</td><td>What is the intention of deploying the chatbot?</td></tr>
+        <tr><td class="id">K2</td><td>How does the deployment process of the chatbot work?</td></tr>
+        <tr><td class="id">K3</td><td>What are the consequences after the deployment of the chatbot?</td></tr>
+        <tr><td class="id">K4</td><td>How is the chatbot developed?</td></tr>
+        <tr><td class="id">K5</td><td>Who is the chatbot's intended target group?</td></tr>
+        <tr><td class="id">K6</td><td>Who is responsible for the chatbot's deployment?</td></tr>
+        <tr><td class="id">K7</td><td>Is the chatbot's deployment right?</td></tr>
+      </tbody></table></div>
+
+      <h4>Chatbot usage</h4>
+      <div class="tablewrap"><table><thead><tr><th class="id">ID</th><th>Question</th></tr></thead><tbody>
+        <tr><td class="id">N1</td><td>How is the chatbot operated?</td></tr>
+        <tr><td class="id">N2</td><td>How is the chatbot used by and on people?</td></tr>
+        <tr><td class="id">N3</td><td>How is the chatbot integrated into existing structures?</td></tr>
+        <tr><td class="id">N4</td><td>How can the chatbot be misused?</td></tr>
+        <tr><td class="id">N5</td><td>How would the chatbot handle [this case]?</td></tr>
+        <tr><td class="id">N6</td><td>What are the costs of the chatbot?</td></tr>
+      </tbody></table></div>
+
+      <h4>Data</h4>
+      <div class="tablewrap"><table><thead><tr><th class="id">ID</th><th>Question</th></tr></thead><tbody>
+        <tr><td class="id">D1</td><td>What kind of data was the chatbot trained on?</td></tr>
+        <tr><td class="id">D2</td><td>What is the source of the training data?</td></tr>
+        <tr><td class="id">D3</td><td>Are the data correct / representative / safe?</td></tr>
+      </tbody></table></div>
+
+      <h4>Chatbot specifications</h4>
+      <div class="tablewrap"><table><thead><tr><th class="id">ID</th><th>Question</th></tr></thead><tbody>
+        <tr><td class="id">S1</td><td>What does the chatbot consider and why?</td></tr>
+        <tr><td class="id">S2</td><td>What is the scope of the chatbot's capability?</td></tr>
+        <tr><td class="id">S3</td><td>Which kind of output does the chatbot give?</td></tr>
+        <tr><td class="id">S4</td><td>How does the chatbot learn?</td></tr>
+        <tr><td class="id">S5</td><td>What is the chatbot's overall logic?</td></tr>
+        <tr><td class="id">S6</td><td>Which kind of algorithm was used?</td></tr>
+        <tr><td class="id">S7</td><td>What kind of mistakes is the chatbot likely to make?</td></tr>
+        <tr><td class="id">S8</td><td>What are the limitations of the chatbot?</td></tr>
+        <tr><td class="id">S9</td><td>How reliable are the predictions of the chatbot?</td></tr>
+        <tr><td class="id">S10</td><td>What does [a machine learning concept] mean?</td></tr>
+      </tbody></table></div>
+
+      <h3>Prior experience and chatbot use</h3>
+      <p>Record each participant's previous exposure to chatbots, in general and in their professional field. This context helps you interpret their ratings, since prior experience shapes how people judge a new tool.</p>
+      <div class="callout adapt"><span class="k">Adapt for your domain</span><p>Insert your chatbot's name and adapt the domain reference before the session.</p></div>
+      <div class="tablewrap"><table><thead><tr><th>Question</th></tr></thead><tbody>
+        <tr><td>Have you ever used a chatbot in a professional context?</td></tr>
+        <tr><td>Have you ever used the <span class="ph">[insert name here]</span> chatbot? (If applicable) How often do you use this chatbot? [frequency]</td></tr>
+        <tr><td>If yes, which chatbot did you use?</td></tr>
+        <tr><td>For what reasons do you use chatbots in your work?</td></tr>
+        <tr><td>What experiences have you had with <span class="ph">[insert domain]</span> chatbots?</td></tr>
+        <tr><td>What other experiences have you had with chatbots? (If applicable) How often do you use that chatbot? [frequency]</td></tr>
+      </tbody></table></div>
+    </div>
+  </section>
+
+  <!-- ================= ANALYZE ================= -->
+  <section class="panel" id="p-analyze" role="tabpanel" aria-labelledby="t-analyze">
+    <h2>Analyze the data</h2>
+    <div class="sub">Embedded mixed-methods design</div>
+    <p>The CEF combines quantitative survey data with qualitative interview data. The combination of both types of data is used to gain insights.</p>
+
+    <h3>Survey data</h3>
+    <p>Read <strong>RTLX</strong> at the subscale level rather than as a single score, since some dimensions (for example physical demand) could carry little meaning in chatbot use. Compare against domain reference values.</p>
+    <p>Score the <strong>CUQ</strong> from 0 to 100 with the provided tool. No general CUQ benchmark exists yet, so treat scores comparatively.</p>
+    <p>Analyze <strong>Perceived Trustworthiness</strong> subscale by subscale, and combine it with the qualitative data where useful.</p>
+
+    <h3>Interview data</h3>
+    <p>Analyze the interviews with thematic coding analysis. Code inductively to let themes emerge, with a deductive approach for information needs, which are structured by the adapted XAI Novice Question Bank. The analysis follows five phases:</p>
+    <ol>
+      <li>Familiarizing yourself with your data.</li>
+      <li>Generating initial codes.</li>
+      <li>Identifying themes.</li>
+      <li>Constructing thematic networks.</li>
+      <li>Integration and interpretation.</li>
+    </ol>
+    <div class="callout tip"><span class="k">Tip</span><p>Use a qualitative coding software such as ATLAS.ti to manage the process. After coding, constructing networks helps you gain insights into the interview data.</p></div>
+    <figure>
+      <img src="assets/images/thematic-network.png" alt="Thematic network: areas of application" onerror="this.style.display='none';this.nextElementSibling.style.display='block'">
+      <div class="imgfallback">Thematic network figure — add <code>assets/images/thematic-network.png</code></div>
+      <figcaption>Thematic network: areas of application.</figcaption>
+    </figure>
+  </section>
+
+  <!-- ================= CITE ================= -->
+  <section class="panel" id="p-cite" role="tabpanel" aria-labelledby="t-cite">
+    <h2>Use &amp; cite</h2>
+    <div class="sub">For practitioners and researchers</div>
+    <p>The CEF is a transferable instrument. To apply it in a new domain, replace the domain-specific tasks and adapt the survey and interview wording, while keeping the five-component structure.</p>
+
+    <h3>How to cite</h3>
+    <div class="callout adapt"><span class="k">Adapt for your domain</span><p>Paste your full citation and BibTeX entry for the main publication here.</p></div>
+    <pre><code>@inproceedings{YOUR_KEY,
+  title     = {Applying the Chatbot Evaluation Framework (CEF): A Practitioner's Guide},
+  author    = {...},
+  year      = {2025},
+  booktitle = {...}
+}</code></pre>
+
+    <h3>Tools and resources</h3>
+    <ul>
+      <li><strong>CUQ scoring tool</strong> — <a href="https://www.ulster.ac.uk/research/topic/computer-science/artificial-intelligence/projects/cuq" target="_blank" rel="noopener">Ulster University CUQ project page</a></li>
+      <li><strong>ATLAS.ti</strong> — qualitative coding software for the thematic analysis.</li>
+    </ul>
+
+    <h3>References</h3>
+    <div class="callout note"><p>Replace these with the exact entries from your main publication's bibliography to ensure consistency.</p></div>
+    <ul>
+      <li>Bisconti et al. (2025). On perceived trustworthiness. <span class="ph">[insert full reference]</span></li>
+      <li>Creswell &amp; Plano Clark (2017). <em>Designing and Conducting Mixed Methods Research.</em></li>
+      <li>Hart (2006). NASA-Task Load Index (NASA-TLX); 20 years later. <span class="ph">[insert full reference]</span></li>
+      <li>Hertzum (2021). Reference values for the NASA-TLX. <span class="ph">[insert full reference]</span></li>
+      <li>Holmes et al. (2019). Chatbot Usability Questionnaire (CUQ). <span class="ph">[insert full reference]</span></li>
+      <li>Holmes et al. (2023). CUQ benchmarking note. <span class="ph">[insert full reference]</span></li>
+      <li>NASA Ames Research Center (1988). NASA-TLX paper-and-pencil package. <span class="ph">[insert full reference]</span></li>
+      <li>Robson &amp; McCartan (2024). <em>Real World Research.</em></li>
+      <li>Schmude et al. (2025). XAI Novice Question Bank. <span class="ph">[insert full reference]</span></li>
+      <li>Ulster University (2025). The CUQ scoring tool. <span class="ph">[insert full reference]</span></li>
+    </ul>
+  </section>
+
+</main>
+
+<footer>
+  <div class="wrap">Chatbot Evaluation Framework · <span class="ph">Your name / institution</span></div>
+</footer>
+
+<script>
+  // Independent tab groups: each [role=tablist] manages its own tabs + panels.
+  document.querySelectorAll('[role="tablist"]').forEach(list=>{
+    const tabs = Array.from(list.querySelectorAll('[role="tab"]'));
+    tabs.forEach((tab,i)=>{
+      tab.addEventListener('click',()=>activate(tabs,tab,list));
+      tab.addEventListener('keydown',e=>{
+        if(e.key!=='ArrowRight'&&e.key!=='ArrowLeft')return;
+        e.preventDefault();
+        const dir=e.key==='ArrowRight'?1:-1;
+        const next=tabs[(i+dir+tabs.length)%tabs.length];
+        next.focus(); activate(tabs,next,list);
+      });
+    });
+  });
+
+  function activate(tabs,tab,list){
+    tabs.forEach(t=>{
+      const on = t===tab;
+      t.setAttribute('aria-selected',on);
+      const panel=document.getElementById(t.getAttribute('aria-controls'));
+      if(panel) panel.classList.toggle('active',on);
+    });
+    // only the primary rail updates the URL hash
+    if(list.closest('nav.rail')) history.replaceState(null,'','#'+tab.id.replace('t-',''));
+  }
+
+  // open a primary tab from the URL hash, e.g. #session
+  const hash=location.hash.replace('#','');
+  const target=document.getElementById('t-'+hash);
+  if(target){
+    const list=target.closest('[role="tablist"]');
+    activate(Array.from(list.querySelectorAll('[role="tab"]')),target,list);
+  }
+</script>
+</body>
+</html>
