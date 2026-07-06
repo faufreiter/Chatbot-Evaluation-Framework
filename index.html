@@ -27,7 +27,7 @@
   }
   :root{
   --bg:#F6F7F9; --surface:#FFFFFF; --ink:#181C24; --muted:#5B6470;
-  --line:#E2E5EA; --primary:#1B2436; --accent:#181C24; --accent-soft:#E6F1F0;
+  --line:#E2E5EA; --primary:#1B2436; --accent:#2865e0; --accent-soft:#E6F1F0;
   --adapt-bg:#FFF8E6; --adapt-line:#E0A800; --adapt-ink:#7a5a00;
   --serif:'Public Sans',system-ui,sans-serif;
   --sans:'Public Sans',system-ui,sans-serif;
@@ -148,8 +148,8 @@
 
   <!-- ================= OVERVIEW ================= -->
   <section class="panel active" id="p-overview" role="tabpanel" aria-labelledby="t-overview">
-    <h2>The framework</h2>
-    <div class="sub">What does it measure?</div>
+    <h2>Overview</h2>
+    <div class="sub">How does the Chatbot Evaluation Framework (CEF) work?</div>
     <p>The CEF captures three main dimensions, supported by two further signals: perceived mental workload and users' information needs. 
       It combines quantitative ratings with a qualitative interview using an embedded mixed-methods design.
     </p>
@@ -270,21 +270,43 @@
       </p>
 
       <h3>Task 1</h3>
-      <p><strong>Situation:</strong> Imagine that a customer has sent you the following email. Use the <strong>XY bot</strong> to help you compose an appropriate reply. Work as you would in a real work situation.</p>
-      <blockquote><strong>Subject:</strong> Home office for employee tax assessment<br><br>Dear Sir or Madam,<br><br>I hope you can help me with a few questions about our taxes. My husband and I are both working, and we have some expenses that we would like to claim for tax purposes. I currently work from my home office quite a lot and last year I spent around €2,000 on new equipment (laptop, mouse, headset, etc.) and furniture for my home office. Can I claim these items in full as income-related expenses?<br><br>Thank you very much for your help!<br><br><em>Anonymized name</em></blockquote>
-      <p><strong>Task:</strong> Create a complete reply email or text that you would use in your everyday work to respond to the inquiry. Once the participant is satisfied with the result, you can begin the interview.</p>
+      <blockquote>
+              <strong>Situation:</strong> 
+              <ul>
+                <li>Imagine that a customer has sent you the following email.</li>
+                <li>Use the <strong>XY bot</strong> to help you compose an appropriate reply.</li>
+                <li>Work as you would in a real work situation.</li>
+              </ul>             
+              ---
+              <br><br>
+
+        <strong>Subject:</strong> Home office for employee tax assessment<br><br>Dear Sir or Madam,<br><br>I hope you can help me with a few questions about our taxes. My husband and I are both working, and we have some expenses that we would like to claim for tax purposes. I currently work from my home office quite a lot and last year I spent around €2,000 on new equipment (laptop, mouse, headset, etc.) and furniture for my home office. Can I claim these items in full as income-related expenses?<br><br>Thank you very much for your help!<br><br><em>Anonymized name</em>
+        <br><br>
+        ---
+        <br><br>
+        <strong>Task:</strong> <br><br>Create a complete reply email or text that you would use in your everyday work to respond to the inquiry. <br><br>
+        <strong>Once you are sufficiently satisfied with the result of your interaction with the chatbot, we can begin the interview.</strong>
+        
+      </blockquote>
 
       <h3>Task 2</h3>
       <blockquote>
-              <strong>Situation:</strong> Imagine that a customer has sent you the following email. 
-              Use the <strong>XY bot</strong> to help you compose an appropriate reply. 
-              Work as you would in a real work situation.
-              <br><br>
-              --
+              <strong>Situation:</strong> 
+              <ul>
+                <li>Imagine that a customer has sent you the following email.</li>
+                <li>Use the <strong>XY bot</strong> to help you compose an appropriate reply.</li>
+                <li>Work as you would in a real work situation.</li>
+              </ul>             
+              ---
               <br><br>
 
-        <strong>Subject:</strong> Income in [country 1 (anonymized)] and child support<br><br>Dear Sir or Madam,<br><br>I am writing to you because I am in a somewhat complex situation. I live in [city in country 2] and work for a company as normal. In addition, however, I work as a freelance consultant for a company in [country 1]. I no longer have a residence in [country 1] and will perform this consulting work exclusively 100% remotely from [country 2].<br><br>I am not sure how this will affect my taxes. Where do I have to pay tax on my salary now? In [country 2], right? But do I also have to pay taxes in [country 1]? Another issue concerns my two minor children (aged 6 and 12). One lives with my first ex-wife in [city in country 1] and my second child lives in [country 3] with my second ex-wife. I pay a total of €1,000 in child support each month. Where can I claim this on my tax return?<br><br>Kind regards<br><br><em>Anonymized name</em></blockquote>
-      <p><strong>Task:</strong> Create a complete reply email or text that you would use in your everyday work to respond to the inquiry. Once the participant is satisfied with the result, you can begin the interview.</p>
+        <strong>Subject:</strong> Income in [country 1 (anonymized)] and child support<br><br>Dear Sir or Madam,<br><br>I am writing to you because I am in a somewhat complex situation. I live in [city in country 2] and work for a company as normal. In addition, however, I work as a freelance consultant for a company in [country 1]. I no longer have a residence in [country 1] and will perform this consulting work exclusively 100% remotely from [country 2].<br><br>I am not sure how this will affect my taxes. Where do I have to pay tax on my salary now? In [country 2], right? But do I also have to pay taxes in [country 1]? Another issue concerns my two minor children (aged 6 and 12). One lives with my first ex-wife in [city in country 1] and my second child lives in [country 3] with my second ex-wife. I pay a total of €1,000 in child support each month. Where can I claim this on my tax return?<br><br>Kind regards<br><br><em>Anonymized name</em>
+              <br><br>
+        ---
+        <br><br>
+        <strong>Task:</strong> <br><br>Create a complete reply email or text that you would use in your everyday work to respond to the inquiry. <br><br>
+        <strong>Once you are sufficiently satisfied with the result of your interaction with the chatbot, we can begin the interview.</strong>
+      </blockquote>
     </div>
   </section>
 
@@ -475,7 +497,7 @@
     <h3>Survey data</h3>
     <p>Read <strong>RTLX</strong> at the subscale level rather than as a single score, since some dimensions (for example physical demand) could carry little meaning in chatbot use. Compare against domain reference values.</p>
     <p>Score the <strong>CUQ</strong> from 0 to 100 with the provided tool. No general CUQ benchmark exists yet, so treat scores comparatively.</p>
-    <div class="callout note"><p>Download the calculation tool from the <a href="https://www.ulster.ac.uk/research/topic/computer-science/artificial-intelligence/projects/cuq" target="_blank" rel="noopener">Ulster University CUQ project page</a>.</p></div>
+    <div class="callout tip"><span class="k">Tip</span><p>Download the calculation tool from the <a href="https://www.ulster.ac.uk/research/topic/computer-science/artificial-intelligence/projects/cuq" target="_blank" rel="noopener">Ulster University CUQ project page</a></p></div>
 
     <p>Analyze <strong>Perceived Trustworthiness</strong> subscale by subscale, and combine it with the qualitative data where useful.</p>
 
