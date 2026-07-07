@@ -28,7 +28,7 @@
   :root{
   --bg:#F6F7F9; --surface:#FFFFFF; --ink:#181C24; --muted:#5B6470;
   --line:#E2E5EA; --primary:#1B2436; --accent:#2865e0; --accent-soft:#E6F1F0;
-  --adapt-bg:#FFF8E6; --adapt-line:#E0A800; --adapt-ink:#7a5a00;
+  --adapt-bg:#e6e9ff; --adapt-line:#0095e0; --adapt-ink:#5B6470;
   --serif:'Public Sans',system-ui,sans-serif;
   --sans:'Public Sans',system-ui,sans-serif;
   --mono:'Public Sans',system-ui,sans-serif;
@@ -70,7 +70,7 @@
 
   /* secondary sub-tabs */
   .subnav{display:flex;gap:2px;flex-wrap:wrap;border-bottom:1px solid var(--line);margin:6px 0 26px}
-  .subtab{background:none;border:none;border-bottom:2px solid transparent;padding:9px 14px;margin-bottom:-1px;cursor:pointer;font-family:var(--sans);font-size:14px;color:var(--muted);transition:.15s}
+  .subtab{background:none;border:none;border-bottom:2px solid transparent;padding:9px 14px;margin-bottom:-1px;cursor:pointer;font-family:var(--sans);font-size:20px;color:var(--muted);transition:.15s}
   .subtab:hover{color:var(--ink)}
   .subtab[aria-selected="true"]{color:var(--primary);border-bottom-color:var(--accent);font-weight:600}
   .subtab:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
@@ -92,7 +92,7 @@
   .tip{background:#EEF4FF;border-left:3px solid #2865e0;color:#243b66}
   .adapt{background:var(--adapt-bg);border-left:3px solid var(--adapt-line);color:var(--adapt-ink)}
   .callout .k{font-family:var(--mono);font-size:11px;letter-spacing:.08em;text-transform:uppercase;display:block;margin-bottom:4px;opacity:.85}
-  .ph{background:var(--adapt-bg);border-radius:3px;padding:1px 5px;font-style:italic;color:var(--adapt-ink)}
+  .ph{background:var(--adapt-bg);border-radius:3px;padding:1px 5px;font-style:italic;color:var(--ink)}
 
   blockquote{border-left:3px solid var(--accent);background:var(--surface);border-radius:0 8px 8px 0;padding:14px 18px;margin:0 0 16px;font-family:var(--serif);font-size:17px;color:var(--primary);max-width:70ch}
 
@@ -150,36 +150,23 @@
   <section class="panel active" id="p-overview" role="tabpanel" aria-labelledby="t-overview">
     <h2>Overview</h2>
     <div class="sub">How does the Chatbot Evaluation Framework (CEF) work?</div>
-    <p>The CEF captures three main dimensions, supported by two further signals: perceived mental workload and users' information needs. 
-      It combines quantitative ratings with a qualitative interview using an embedded mixed-methods design.
+    <p>The <strong>Chatbot Evaluation Framework</strong> (CEF) uses an embedded mixed-methods design, combining quantitative ratings of perceived mental workload and usability with a qualitative interview assessing trustworthiness and workflow integration.
+    The CEF captures these human-centered dimensions and is designed for chatbots deployed in expert knowledge work.
     </p>
     <div class="measures">
       <div class="measure"><div class="k">Dimension 01</div><div class="v">Usability</div></div>
-      <div class="measure"><div class="k">Dimension 02</div><div class="v">Perceived Trustworthiness</div></div>
-      <div class="measure"><div class="k">Dimension 03</div><div class="v">Workflow Integration</div></div>
+      <div class="measure"><div class="k">Dimension 02</div><div class="v">Perceived Mental Workload</div></div>
+      <div class="measure"><div class="k">Dimension 03</div><div class="v">Perceived Trustworthiness</div></div>
+      <div class="measure"><div class="k">Dimension 04</div><div class="v">Workflow Integration</div></div>
     </div>
-    <div class="callout note"><p>Run the components in the order below, recording each session via video conference or in person. Each session lasts about 40 to 60 minutes per participant.</p></div>
+    <p>Run the components in the order below, recording each session via video conference or in person. 
+      Each session lasts about 40 to 60 minutes per participant.</p>
 
-    <h3>Study procedure</h3>
     <figure>
       <img src="data/images/study_procedure_ver_3.png" alt="Study procedure" onerror="this.style.display='none';this.nextElementSibling.style.display='block'">
       <div class="imgfallback">Study procedure diagram — add <code>assets/images/study-procedure.png</code></div>
       <figcaption>Study procedure.</figcaption>
     </figure>
-
-    <h3>The components</h3>
-    <div class="tablewrap">
-      <table>
-        <thead><tr><th>Component</th><th>Items</th><th>Focus</th></tr></thead>
-        <tbody>
-          <tr><td>Pre-task rating</td><td>2</td><td>Prior knowledge, task-solving confidence</td></tr>
-          <tr><td>Tasks</td><td>2</td><td>Realistic advisory scenarios</td></tr>
-          <tr><td>Post-task rating</td><td>2</td><td>Helpfulness of chatbot output</td></tr>
-          <tr><td>Online survey</td><td>28</td><td>Workload (RTLX), Usability (CUQ), Perceived Trustworthiness</td></tr>
-          <tr><td>Interview</td><td>18</td><td>Perceived Trustworthiness, Integration into Work Routine, Areas for Future Development, Information Needs, Prior Experience and Chatbot Use</td></tr>
-        </tbody>
-      </table>
-    </div>
   </section>
 
   <!-- ================= CHECKLIST ================= -->
@@ -226,37 +213,16 @@
     <div class="sub">Adapt the items for your domain.</div>
 
     <div class="subnav" role="tablist" aria-label="Prepare steps">
-      <button class="subtab" role="tab" aria-selected="true"  aria-controls="s-demo"   id="st-demo">Demographics Form</button>
-      <button class="subtab" role="tab" aria-selected="false" aria-controls="s-intro"  id="st-intro">Study Introduction</button>
+      <button class="subtab" role="tab" aria-selected="true"  aria-controls="s-wording" id="st-wording">Adapt Wordings</button>
       <button class="subtab" role="tab" aria-selected="false" aria-controls="s-tasks"  id="st-tasks">Tasks</button>
     </div>
 
-    <div class="subpanel active" id="s-demo" role="tabpanel" aria-labelledby="st-demo">
-      <p>Collect this form before the session begins. It records the background, expertise, and experience that let you interpret each participant's later ratings and interview answers.</p>
-      <div class="tablewrap">
-        <table>
-          <thead><tr><th>Question</th><th>Type</th><th>Categories</th></tr></thead>
-          <tbody>
-            <tr><td>First Name</td><td>open-ended</td><td></td></tr>
-            <tr><td>Last Name</td><td>open-ended</td><td></td></tr>
-            <tr><td>How old are you? Please indicate your age.</td><td>open-ended</td><td></td></tr>
-            <tr><td>Which gender do you identify with?</td><td>categorical</td><td>"male", "female", "non-binary", "other gender", "don't want to answer"</td></tr>
-            <tr><td>If you selected "other gender" in the previous question, please specify below.</td><td>open-ended</td><td></td></tr>
-            <tr><td>What is your highest educational qualification?</td><td>categorical</td><td>"No compulsory school certificate", "Compulsory school certificate", "High school diploma", "University of Applied Sciences", "University", "Master craftsman's diploma", "My degree is not listed."</td></tr>
-            <tr><td>In which subject area or professional field do you have expertise?</td><td>open-ended</td><td></td></tr>
-            <tr><td>What is your job title?</td><td>open-ended</td><td></td></tr>
-            <tr><td>How many years of work experience do you have in your field?</td><td>open-ended</td><td></td></tr>
-            <tr><td>How many years of work experience do you have in the field of <span class="ph">[insert specific domain area]</span>?</td><td>open-ended</td><td></td></tr>
-          </tbody>
-        </table>
-      </div>
+    <div class="subpanel active" id="s-wording" role="tabpanel" aria-labelledby="st-wording">
+      <p>Before running any sessions, go through the survey scales and interview questions and adapt the wording to your own chatbot and domain. The CEF's instruments are written to be transferable, but a few details always need to be filled in: your chatbot's name, the professional role of your participants, and the specific domain the chatbot supports.</p>
+      <p>Most importantly, the <strong>interview questions</strong> should be tailored to the specific characteristics of the chatbot being studied. The CUQ and RTLX items are validated instruments and should be left as they are.</p>
+      <div class="callout tip"><span class="k">Tip</span><p>Every place that needs a change is marked with a highlighted placeholder like <span class="ph">[insert domain]</span>, inside the <strong>"Run a session"</strong> tabs. Work through those tabs once before your first session and replace every marked placeholder.</p></div>
     </div>
 
-    <div class="subpanel" id="s-intro" role="tabpanel" aria-labelledby="st-intro">
-      <p>Open the session by explaining its purpose and procedure in your own words, putting the participant at ease. Cover what the study examines, the three parts they will complete, and the fact that their personal impressions matter. The following wording serves as a guide:</p>
-      <blockquote>"Our study analyzes the usability of the <span class="ph">[insert organization]</span>'s <span class="ph">[insert domain]</span> chatbot, and your personal impressions are important to us. In the first part of the study, you interact with the <span class="ph">[insert domain]</span> chatbot to complete a task using its answers. Then we will ask you to fill out a short questionnaire. Finally, we will discuss your personal impressions of the chatbot."</blockquote>
-      <p>Once you have given this introduction, present the tasks.</p>
-    </div>
 
     <div class="subpanel" id="s-tasks" role="tabpanel" aria-labelledby="st-tasks">
       <p>The tasks are the one component you author yourself, because they must reflect real work in your domain. 
@@ -316,13 +282,45 @@
     <div class="sub">Repeat for each participant.</div>
 
     <div class="subnav" role="tablist" aria-label="Session steps">
-      <button class="subtab" role="tab" aria-selected="true"  aria-controls="s-during"    id="st-during">Human-Chatbot Interaction</button>
+      <button class="subtab" role="tab" aria-selected="true"  aria-controls="s-demo-run"  id="st-demo-run">Demographics Form</button>
+      <button class="subtab" role="tab" aria-selected="false"  aria-controls="s-intro-run" id="st-intro-run">Study Introduction</button>
+      <button class="subtab" role="tab" aria-selected="false" aria-controls="s-during"    id="st-during">Interaction</button>
       <button class="subtab" role="tab" aria-selected="false" aria-controls="s-survey"    id="st-survey">Survey</button>
-      <button class="subtab" role="tab" aria-selected="false" aria-controls="s-interview" id="st-interview">Semi-structured Interview</button>
+      <button class="subtab" role="tab" aria-selected="false" aria-controls="s-interview" id="st-interview">Interview</button>
+    </div>
+
+    <div class="subpanel active" id="s-demo-run" role="tabpanel" aria-labelledby="st-demo-run">
+      <p>Collect this form before the session begins. It records the background, expertise, and experience that let you interpret each participant's later ratings and interview answers.</p>
+      <div class="tablewrap">
+        <table>
+          <thead><tr><th>Question</th><th>Type</th><th>Categories</th></tr></thead>
+          <tbody>
+            <tr><td>First Name</td><td>open-ended</td><td></td></tr>
+            <tr><td>Last Name</td><td>open-ended</td><td></td></tr>
+            <tr><td>How old are you? Please indicate your age.</td><td>open-ended</td><td></td></tr>
+            <tr><td>Which gender do you identify with?</td><td>categorical</td><td>"male", "female", "non-binary", "other gender", "don't want to answer"</td></tr>
+            <tr><td>If you selected "other gender" in the previous question, please specify below.</td><td>open-ended</td><td></td></tr>
+            <tr><td>What is your highest educational qualification?</td><td>categorical</td><td>"No compulsory school certificate", "Compulsory school certificate", "High school diploma", "University of Applied Sciences", "University", "Master craftsman's diploma", "My degree is not listed."</td></tr>
+            <tr><td>In which subject area or professional field do you have expertise?</td><td>open-ended</td><td></td></tr>
+            <tr><td>What is your job title?</td><td>open-ended</td><td></td></tr>
+            <tr><td>How many years of work experience do you have in your field?</td><td>open-ended</td><td></td></tr>
+            <tr><td>How many years of work experience do you have in the field of <span class="ph">[insert specific domain area]</span>?</td><td>open-ended</td><td></td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+
+<!-- Study Introduction -->
+    <div class="subpanel" id="s-intro-run" role="tabpanel" aria-labelledby="st-intro-run">    
+      <h3>Study Introduction</h3>
+      <p>Open the session by explaining its purpose and procedure in your own words, putting the participant at ease. Cover what the study examines, the three parts they will complete, and the fact that their personal impressions matter. The following wording serves as a guide:</p>
+      <blockquote>"Our study analyzes the usability of the <span class="ph">[insert organization]</span>'s <span class="ph">[insert domain]</span> chatbot, and your personal impressions are important to us. In the first part of the study, you interact with the <span class="ph">[insert domain]</span> chatbot to complete a task using its answers. Then we will ask you to fill out a short questionnaire. Finally, we will discuss your personal impressions of the chatbot."</blockquote>
+      <p>Once you have given this introduction, present the tasks.</p>
     </div>
 
     <!-- during -->
-    <div class="subpanel active" id="s-during" role="tabpanel" aria-labelledby="st-during">
+    <div class="subpanel" id="s-during" role="tabpanel" aria-labelledby="st-during">
       <h3>Rating task-solving confidence</h3>
       <p>Taken <strong>before</strong> the chatbot interaction, this rating records how confident the participant feels solving the task unaided. It establishes a baseline that later helps you judge how much the chatbot contributed. Collect one rating per task. Use a 5-point Likert scale, explaining that "1" marks the lowest and "5" the highest point, then ask:</p>
       <blockquote>"How confident are you that you can solve the problem on your own with your current knowledge and without additional support?"</blockquote>
@@ -334,14 +332,21 @@
       <p>Taken <strong>immediately after</strong> the two tasks are solved, this rating captures how helpful the participant found the chatbot's responses. Use a 5-point Likert scale from 1 to 5, then ask:</p>
       <blockquote>"How helpful did you find the chatbot's responses for solving the problem?"</blockquote>
       <p>Collect it separately for each task so you can relate perceived helpfulness to task difficulty.</p>
+      <div class="callout tip"><span class="k">Reference</span><p>  
+      Katherine M. Collins, Albert Q. Jiang, Simon Frieder, Lionel Wong, Miri Zilka, Umang Bhatt, Thomas Lukasiewicz, Yuhuai Wu, Joshua B. Tenenbaum, William Hart, Timothy Gowers, Wenda Li, Adrian Weller, and Mateja Jamnik. 2024. Evaluating language models for mathematics through interactions. <em>Proceedings of the National Academy of Sciences</em> 121, 24 (2024), e2318124121. <a href="https://doi.org/10.1073/pnas.2318124121" target="_blank" rel="noopener">doi:10.1073/pnas.2318124121</a>
+      </p></div>
     </div>
+
+    
 
     <!-- survey -->
     <div class="subpanel" id="s-survey" role="tabpanel" aria-labelledby="st-survey">
       <p>The survey bundles three instruments completed right after the interaction. Administer them on your survey platform in this order, before the interview begins.</p>
 
       <h3>RTLX (Perceived Mental Workload)</h3>
-      <p>Measures perceived mental workload across six subscales (0–100) using a slider scale with 20 intervals.</p>
+      <p>Measures perceived mental workload across six subscales (0–100) using a slider scale with 20 intervals. 
+        An overall score can be obtained by averaging the six ratings, but for chatbot evaluation it is more informative to read the subscales individually, since dimensions such as physical demand may be affected by the study set-up. 
+        Compare against published reference values.</p>
       <div class="tablewrap">
         <table>
           <thead><tr><th>Subscale</th><th>Endpoints</th><th>Description</th></tr></thead>
@@ -355,12 +360,15 @@
           </tbody>
         </table>
       </div>
-      <div class="callout tip"><span class="k">Tip</span><p>An overall score can be obtained by averaging the six ratings, but for chatbot evaluation it is more informative to read the subscales individually, since dimensions such as physical demand may be affected by the study set-up. 
-        Compare against published reference values.  No general CUQ benchmark exists yet, so use the score only for comparison.</p></div>
+      <div class="callout tip"><span class="k">Reference</span><p>  
+        Sandra G. Hart. 2006. Nasa-Task Load Index (NASA-TLX); 20 Years Later. <em>Proceedings of the Human Factors and Ergonomics Society Annual Meeting</em> 50, 9 (2006), 904–908. <a href="https://doi.org/10.1177/154193120605000909" target="_blank" rel="noopener">doi:10.1177/154193120605000909</a>
+        <br><br>
+        Morten Hertzum. 2021. Reference values and subscale patterns for the task load index (TLX): a meta-analytic review. <em>Ergonomics</em> 64, 7 (2021), 869–878. <a href="https://doi.org/10.1080/00140139.2021.1876927" target="_blank" rel="noopener">doi:10.1080/00140139.2021.1876927</a>
+      </p></div>
 
       <h3>Chatbot Usability Questionnaire (CUQ)</h3>
-      <p>Measures usability specifically for chatbots through 16 positively and negatively worded items on a 5-point Likert scale from "strongly disagree" to "strongly agree". Responses convert into a single score from 0 to 100 using the authors' calculation tool.</p>
-      <div class="callout note"><p>Download the calculation tool from the <a href="https://www.ulster.ac.uk/research/topic/computer-science/artificial-intelligence/projects/cuq" target="_blank" rel="noopener">Ulster University CUQ project page</a>.</p></div>
+      <p>Measures usability specifically for chatbots through 16 positively and negatively worded items on a 5-point Likert scale from <em>"strongly disagree"</em> to <em>"strongly agree"</em>. Responses convert into a single score from 0 to 100 using the authors' calculation tool. No general CUQ benchmark exists yet, so use the score only for comparison.</p>
+      
       <div class="tablewrap">
         <table>
           <thead><tr><th class="id">ID</th><th>Question</th></tr></thead>
@@ -384,9 +392,12 @@
           </tbody>
         </table>
       </div>
-
-      <h3>Perceived Trustworthiness</h3>
-      <p>Six items capture how far participants trust and feel comfortable relying on the chatbot, on a 5-point Likert scale. Two items address general attitudes toward AI, which helps you separate trust in the chatbot from broader feelings about the technology.</p>
+      <div class="callout tip"><span class="k">Reference</span><p>  
+        Samuel Holmes, Anne Moorhead, Raymond Bond, Huiru Zheng, Vivien Coates, and Michael McTear. 2019. Usability testing of a healthcare chatbot: Can we use conventional methods to assess conversational user interfaces?. In <em>Proceedings of the 31st European Conference on Cognitive Ergonomics</em> (Belfast, United Kingdom) (ECCE '19). Association for Computing Machinery, New York, NY, USA, 207–214. <a href="https://doi.org/10.1145/3335082.3335094" target="_blank" rel="noopener">doi:10.1145/3335082.3335094</a>
+        </p>
+      </div>
+    <h3>Perceived Trustworthiness</h3>
+      <p>Six items capture how far participants trust and feel comfortable relying on the chatbot, on a 5-point Likert scale from <em>"strongly disagree"</em> to <em>"strongly agree"</em>. Two items address general attitudes toward AI, which helps you separate trust in the chatbot from broader feelings about the technology.</p>
       <div class="tablewrap">
         <table>
           <thead><tr><th>Question</th></tr></thead>
@@ -404,7 +415,7 @@
 
     <!-- interview -->
     <div class="subpanel" id="s-interview" role="tabpanel" aria-labelledby="st-interview">
-      <p>The interview gathers the qualitative depth that is combined with the survey scores. Questions are grouped by dimension so you can connect what participants say back to their ratings. Treat the wording as a guide, and follow up wherever a participant raises something useful.</p>
+      <p>The semi-structured interview gathers the qualitative depth that is combined with the survey scores. Questions are grouped by dimension so you can connect what participants say back to their ratings. Treat the wording as a guide, and follow up wherever a participant raises something useful.</p>
       <div class="callout adapt"><span class="k">Adapt for your domain</span><p>Insert your chatbot's name, the relevant role, and domain references where marked before the session.</p></div>
 
       <h3>Interview Questions</h3>
@@ -491,11 +502,14 @@
   <!-- ================= ANALYZE ================= -->
   <section class="panel" id="p-analyze" role="tabpanel" aria-labelledby="t-analyze">
     <h2>Analyze the data</h2>
-    <div class="sub">Embedded mixed-methods design</div>
-    <p>The CEF combines quantitative survey data with qualitative interview data. The combination of both types of data is used to gain insights.</p>
+    <div class="sub">How-to</div>
+    <p>The CEF combines quantitative survey data with qualitative interview data using an embedded mixed-methods design. </p>
 
     <h3>Survey data</h3>
     <p>Read <strong>RTLX</strong> at the subscale level rather than as a single score, since some dimensions (for example physical demand) could carry little meaning in chatbot use. Compare against domain reference values.</p>
+     <div class="callout tip"><span class="k">Reference</span><p>  
+        Morten Hertzum. 2021. Reference values and subscale patterns for the task load index (TLX): a meta-analytic review. <em>Ergonomics</em> 64, 7 (2021), 869–878. <a href="https://doi.org/10.1080/00140139.2021.1876927" target="_blank" rel="noopener">doi:10.1080/00140139.2021.1876927</a>
+      </p></div>
     <p>Score the <strong>CUQ</strong> from 0 to 100 with the provided tool. No general CUQ benchmark exists yet, so treat scores comparatively.</p>
     <div class="callout tip"><span class="k">Tip</span><p>Download the calculation tool from the <a href="https://www.ulster.ac.uk/research/topic/computer-science/artificial-intelligence/projects/cuq" target="_blank" rel="noopener">Ulster University CUQ project page</a></p></div>
 
@@ -521,9 +535,9 @@
   <!-- ================= CITE ================= -->
   <section class="panel" id="p-cite" role="tabpanel" aria-labelledby="t-cite">
     <h2>Use &amp; cite</h2>
-    <div class="sub">For practitioners and researchers</div>
+    <div class="sub">References and material for practitioners and researchers</div>
     <h3>License</h3>
-    <p>The CEF is a transferable instrument. To apply it in a new domain, replace the domain-specific tasks and adapt the survey and interview wording, while keeping the five-component structure.</p>
+    <p>ADD LICENSE INFORMATION HERE.</p>
     <h3>How to cite</h3>
     <pre><code>@inproceedings{YOUR_KEY,
   title     = {Applying the Chatbot Evaluation Framework (CEF): A Practitioner's Guide},
@@ -534,30 +548,36 @@
 
     <h3>Tools and resources</h3>
     <ul>
-      <li><strong>CUQ calculation tool</strong> — <a href="https://www.ulster.ac.uk/research/topic/computer-science/artificial-intelligence/projects/cuq" target="_blank" rel="noopener">Ulster University CUQ project page</a></li>
-      <li><strong>ATLAS.ti</strong> — qualitative coding software for the thematic analysis.</li>
+      <li><strong>CUQ calculation tool</strong> - <a href="https://www.ulster.ac.uk/research/topic/computer-science/artificial-intelligence/projects/cuq" target="_blank" rel="noopener">Ulster University CUQ project page</a></li>
+      <li><strong>ATLAS.ti</strong> - qualitative coding software for the thematic analysis.</li>
+      <li><strong>Adapted XAI Novice Question Bank</strong> - Add a download link.</li>
+      <li><strong>Checklist</strong> - Add a download link.</li>
     </ul>
 
-    <h3>References</h3>
-    <div class="callout note"><p>Replace these with the exact entries from your main publication's bibliography to ensure consistency.</p></div>
+  <h3>References</h3>
     <ul>
-      <li>Bisconti et al. (2025). On perceived trustworthiness. <span class="ph">[insert full reference]</span></li>
-      <li>Creswell &amp; Plano Clark (2017). <em>Designing and Conducting Mixed Methods Research.</em></li>
-      <li>Hart (2006). NASA-Task Load Index (NASA-TLX); 20 years later. <span class="ph">[insert full reference]</span></li>
-      <li>Hertzum (2021). Reference values for the NASA-TLX. <span class="ph">[insert full reference]</span></li>
-      <li>Holmes et al. (2019). Chatbot Usability Questionnaire (CUQ). <span class="ph">[insert full reference]</span></li>
-      <li>Holmes et al. (2023). CUQ benchmarking note. <span class="ph">[insert full reference]</span></li>
-      <li>NASA Ames Research Center (1988). NASA-TLX paper-and-pencil package. <span class="ph">[insert full reference]</span></li>
-      <li>Robson &amp; McCartan (2024). <em>Real World Research.</em></li>
-      <li>Schmude et al. (2025). XAI Novice Question Bank. <span class="ph">[insert full reference]</span></li>
-      <li>Ulster University (2025). The CUQ calculation tool. <span class="ph">[insert full reference]</span></li>
+      <li>ATLAS.ti Scientific Software Development GmbH. 2025. <em>ATLAS.ti | Die #1 Software für qualitative Datenanalysen</em>. <a href="https://atlasti.com/de" target="_blank" rel="noopener">atlasti.com/de</a></li>
+      <li>Piercosma Bisconti, Letizia Aquilino, Antonella Marchetti, and Daniele Nardi. 2025. <em>A Formal Account of AI Trustworthiness: Connecting Intrinsic and Perceived Trustworthiness.</em> AAAI Press, 131–140.</li>
+      <li>Katherine M. Collins, Albert Q. Jiang, Simon Frieder, Lionel Wong, Miri Zilka, Umang Bhatt, Thomas Lukasiewicz, Yuhuai Wu, Joshua B. Tenenbaum, William Hart, Timothy Gowers, Wenda Li, Adrian Weller, and Mateja Jamnik. 2024. Evaluating language models for mathematics through interactions. <em>Proceedings of the National Academy of Sciences</em> 121, 24 (2024), e2318124121. <a href="https://doi.org/10.1073/pnas.2318124121" target="_blank" rel="noopener">doi:10.1073/pnas.2318124121</a></li>
+      <li>John W. Creswell and Vicki L. Plano Clark. 2017. <em>Designing and Conducting Mixed Methods Research.</em> SAGE Publications, United States.</li>
+      <li>Sandra G. Hart. 2006. Nasa-Task Load Index (NASA-TLX); 20 Years Later. <em>Proceedings of the Human Factors and Ergonomics Society Annual Meeting</em> 50, 9 (2006), 904–908. <a href="https://doi.org/10.1177/154193120605000909" target="_blank" rel="noopener">doi:10.1177/154193120605000909</a></li>
+      <li>Morten Hertzum. 2021. Reference values and subscale patterns for the task load index (TLX): a meta-analytic review. <em>Ergonomics</em> 64, 7 (2021), 869–878. <a href="https://doi.org/10.1080/00140139.2021.1876927" target="_blank" rel="noopener">doi:10.1080/00140139.2021.1876927</a></li>
+      <li>Samuel Holmes, Raymond Bond, Anne Moorhead, Jane Zheng, Vivien Coates, and Michael McTear. 2023. Towards Validating a Chatbot Usability Scale. In <em>Design, User Experience, and Usability</em>, Aaron Marcus, Elizabeth Rosenzweig, and Marcelo M. Soares (Eds.). Springer Nature Switzerland, Cham, 321–339.</li>
+      <li>Samuel Holmes, Anne Moorhead, Raymond Bond, Huiru Zheng, Vivien Coates, and Michael McTear. 2019. Usability testing of a healthcare chatbot: Can we use conventional methods to assess conversational user interfaces?. In <em>Proceedings of the 31st European Conference on Cognitive Ergonomics</em> (Belfast, United Kingdom) (ECCE '19). Association for Computing Machinery, New York, NY, USA, 207–214. <a href="https://doi.org/10.1145/3335082.3335094" target="_blank" rel="noopener">doi:10.1145/3335082.3335094</a></li>
+      <li>NASA Ames Research Center. 1988. <em>NASA Task Load Index (TLX) Version 1.0 Paper and Pencil Package.</em> Technical Report. NASA Ames Research Center, Moffett Field, California. <a href="https://humansystems.arc.nasa.gov/groups/tlx/downloads/TLX_pappen_manual.pdf" target="_blank" rel="noopener">humansystems.arc.nasa.gov</a></li>
+      <li>Colin Robson. 2024. <em>Real World Research: A Resource for Users of Social Research Methods in Applied Settings</em> (5th ed.). Wiley, Hoboken, NJ.</li>
+      <li>Timothée Schmude, Laura Koesten, Torsten Möller, and Sebastian Tschiatschek. 2025. Information that matters: Exploring information needs of people affected by algorithmic decisions. <em>International Journal of Human-Computer Studies</em> 193 (2025), 103380. <a href="https://doi.org/10.1016/j.ijhcs.2024.103380" target="_blank" rel="noopener">doi:10.1016/j.ijhcs.2024.103380</a></li>
+      <li>Ulster University. 2025. <em>The Chatbot Usability Questionnaire (CUQ).</em> <a href="https://www.ulster.ac.uk/research/topic/computer-science/artificial-intelligence/projects/cuq" target="_blank" rel="noopener">ulster.ac.uk</a></li>
     </ul>
   </section>
+
+
+
 
 </main>
 
 <footer>
-  <div class="wrap">Chatbot Evaluation Framework · <span class="ph">Your name / institution</span></div>
+  <div class="wrap">Chatbot Evaluation Framework · INSERT AUTHOR</div>
 </footer>
 
 <script>
