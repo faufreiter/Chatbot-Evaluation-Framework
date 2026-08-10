@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Chatbot Evaluation Framework (CEF)</title>
+<title>Chatbot Evaluation Procedure (CEP)</title>
 <style>
   @font-face{
     font-family:'Public Sans';
@@ -125,8 +125,9 @@
 
 <header>
   <div class="wrap head-inner">
-    <h1>Chatbot Evaluation Framework</h1>
-    <p class="lede">A reusable, mixed-methods instrument for evaluating a domain-specific advisory chatbot from the user's perspective.</p>
+    <h1>Chatbot Evaluation Procedure</h1>
+    <p class="lede">
+      A mixed-methods approach for evaluating domain-specific advisory chatbots from the user's perspective.</p>
   </div>
 </header>
 
@@ -134,8 +135,8 @@
   <div class="wrap">
     <div class="rail-inner" role="tablist">
       <button class="tab" role="tab" aria-selected="true"  aria-controls="p-overview"  id="t-overview"><span class="num">!</span>Overview</button>
-      <button class="tab" role="tab" aria-selected="false" aria-controls="p-prepare"   id="t-prepare"><span class="num">1</span>Prepare and adapt</button>
-      <button class="tab" role="tab" aria-selected="false" aria-controls="p-session"   id="t-session"><span class="num">2</span>Run a session</button>
+      <button class="tab" role="tab" aria-selected="false" aria-controls="p-prepare"   id="t-prepare"><span class="num">1</span>Study Preparation</button>
+      <button class="tab" role="tab" aria-selected="false" aria-controls="p-session"   id="t-session"><span class="num">2</span>Evaluation Session</button>
       <button class="tab" role="tab" aria-selected="false" aria-controls="p-analyze"   id="t-analyze"><span class="num">3</span>Analyze the data</button>
       <button class="tab" role="tab" aria-selected="false" aria-controls="p-checklist" id="t-checklist"><span class="num">✓</span>Checklist</button>
       <button class="tab" role="tab" aria-selected="false" aria-controls="p-cite"      id="t-cite"><span class="num">+</span>Use &amp; cite</button>
@@ -149,18 +150,19 @@
   <!-- ================= OVERVIEW ================= -->
   <section class="panel active" id="p-overview" role="tabpanel" aria-labelledby="t-overview">
     <h2>Overview</h2>
-    <div class="sub">How does the Chatbot Evaluation Framework (CEF) work?</div>
-    <p>The <strong>Chatbot Evaluation Framework</strong> (CEF) uses an embedded mixed-methods design, combining quantitative ratings of perceived mental workload and usability with a qualitative interview assessing trustworthiness and workflow integration.
-    The CEF captures these human-centered dimensions and is designed for chatbots deployed in expert knowledge work.
+    <div class="sub">How does the Chatbot Evaluation Procedure (CEP) work?</div>
+    <p>The <strong>Chatbot Evaluation Procedure</strong> (CEP) uses an embedded mixed-methods design, combining quantitative ratings of perceived mental workload and usability with a qualitative interview assessing trustworthiness and workflow integration.
+    The CEP captures these human-centered dimensions and is designed for chatbots deployed in expert knowledge work.
     </p>
     <div class="measures">
-      <div class="measure"><div class="k">Dimension 01</div><div class="v">Usability</div></div>
-      <div class="measure"><div class="k">Dimension 02</div><div class="v">Perceived Mental Workload</div></div>
+      <div class="measure"><div class="k">Dimension 01</div><div class="v">Usability Measures</div></div>
+      <div class="measure"><div class="k">Dimension 02</div><div class="v">Workflow Integration</div></div>
       <div class="measure"><div class="k">Dimension 03</div><div class="v">Perceived Trustworthiness</div></div>
-      <div class="measure"><div class="k">Dimension 04</div><div class="v">Workflow Integration</div></div>
+      <div class="measure"><div class="k">Dimension 04</div><div class="v">User Background</div></div>
     </div>
     <p>Run the components in the order below, recording each session via video conference or in person. 
-      Each session lasts about 40 to 60 minutes per participant.</p>
+      Sessions in our tax law study lasted about 40 to 60 minutes per participant.
+    </p>
 
     <figure>
       <img src="data/images/study_procedure_ver_3.png" alt="Study procedure" onerror="this.style.display='none';this.nextElementSibling.style.display='block'">
@@ -175,7 +177,7 @@
     <div class="sub">Prepare once · run per participant · analyze</div>
     <div class="callout tip"><span class="k">Download</span><p><a href="data/extra_material/checklist_guide.pdf" target="_blank" rel="noopener">Download the checklist as a PDF file.</a></p></div>
 
-    <h3>Prepare and adapt</h3>
+    <h3>Study Preparation</h3>
     <ul class="check">
       <li><input type="checkbox" id="c1"><label for="c1">Write two short advisory tasks that reflect real work in your domain, one routine and one more complex, and involve domain experts so the scenarios are realistic.</label></li>
       <li><input type="checkbox" id="c2"><label for="c2">Insert your specific domain in the final item of the demographics form.</label></li>
@@ -210,33 +212,34 @@
 
   <!-- ================= PREPARE ================= -->
   <section class="panel" id="p-prepare" role="tabpanel" aria-labelledby="t-prepare">
-    <h2>Prepare and adapt</h2>
+    <h2>Study Preparation</h2>
     <div class="sub">Adapt the items for your domain.</div>
 
     <div class="subnav" role="tablist" aria-label="Prepare steps">
       <button class="subtab" role="tab" aria-selected="true"  aria-controls="s-wording" id="st-wording">Adapt Wordings</button>
       <button class="subtab" role="tab" aria-selected="false" aria-controls="s-tasks"  id="st-tasks">Tasks</button>
+      <button class="subtab" role="tab" aria-selected="false"  aria-controls="s-demo-run"  id="st-demo-run">Demographics Form</button>
     </div>
 
     <div class="subpanel active" id="s-wording" role="tabpanel" aria-labelledby="st-wording">
-      <p>Before running any sessions, go through the survey scales and interview questions and adapt the wording to your own chatbot and domain. The CEF's instruments are written to be transferable, but a few details always need to be filled in: your chatbot's name, the professional role of your participants, and the specific domain the chatbot supports.</p>
-      <p>Most importantly, the <strong>interview questions</strong> should be tailored to the specific characteristics of the chatbot being studied. The CUQ and RTLX items are validated instruments and should be left as they are.</p>
-      <div class="callout tip"><span class="k">Tip</span><p>Every place that needs a change is marked with a highlighted placeholder like <span class="ph">[insert domain]</span>, inside the <strong>"Run a session"</strong> tabs. Work through those tabs once before your first session and replace every marked placeholder.</p></div>
+      <p>Before running any sessions, go through the survey scales and interview questions and adapt the wording to your own chatbot and domain. A few details always need to be filled in: your chatbot's name, the professional role of your participants, and the specific domain the chatbot supports.</p>
+      <p>Most importantly, the <strong>interview questions</strong> should be tailored to the specific characteristics of the chatbot being studied.</p>
+      <div class="callout tip"><span class="k">Tip</span><p>Every place that needs a change is marked with a highlighted placeholder like <span class="ph">[insert domain]</span>, inside the <strong>"Evaluation Session"</strong> tabs. Work through those tabs once before your first session and replace every marked placeholder.</p></div>
     </div>
 
 
     <div class="subpanel" id="s-tasks" role="tabpanel" aria-labelledby="st-tasks">
-      <p>The tasks are the one component you author yourself, because they must reflect real work in your domain. 
-        Build two short scenarios framed as an incoming client request, and ask the participant to respond as they would in everyday practice. 
-        Vary the difficulty between the two so the evaluation captures both routine and more complex queries. 
+      <p>
+        Each evaluation sesssion is built on having a task-based interaction at the beginning of each session. 
+        We recommend designing two tasks for chatbot interaction with different levels of difficulty. 
         Replace the email content and the chatbot name (<strong>XY bot</strong>) with scenarios from your own domain.
       </p>
       <div class="callout tip"><span class="k">Tip</span><p>Involve domain experts when creating the tasks, so the examples are realistic and reflect what users of the chatbot actually encounter in their everyday work.</p></div>
       <p>
-        <strong>Task 1</strong> is a simpler inquiry, while <strong>Task 2</strong> is a more demanding inquiry that requires linking different content to answer. 
+      In our tax law study, participants worked on two tasks: <strong>Task 1</strong> was a straightforward inquiry answerable from a single source, while <strong>Task 2</strong> was more demanding and required linking information across several sources.
       </p>
 
-      <h3>Task 1</h3>
+      <h3>Sample Task 1</h3>
       <blockquote>
               <strong>Situation:</strong> 
               <ul>
@@ -256,7 +259,7 @@
         
       </blockquote>
 
-      <h3>Task 2</h3>
+      <h3>Sample Task 2</h3>
       <blockquote>
               <strong>Situation:</strong> 
               <ul>
@@ -275,22 +278,9 @@
         <strong>Once you are sufficiently satisfied with the result of your interaction with the chatbot, we can begin the interview.</strong>
       </blockquote>
     </div>
-  </section>
 
-  <!-- ================= RUN A SESSION ================= -->
-  <section class="panel" id="p-session" role="tabpanel" aria-labelledby="t-session">
-    <h2>Run a session</h2>
-    <div class="sub">Repeat for each participant.</div>
-
-    <div class="subnav" role="tablist" aria-label="Session steps">
-      <button class="subtab" role="tab" aria-selected="true"  aria-controls="s-demo-run"  id="st-demo-run">Demographics Form</button>
-      <button class="subtab" role="tab" aria-selected="false"  aria-controls="s-intro-run" id="st-intro-run">Study Introduction</button>
-      <button class="subtab" role="tab" aria-selected="false" aria-controls="s-during"    id="st-during">Interaction</button>
-      <button class="subtab" role="tab" aria-selected="false" aria-controls="s-survey"    id="st-survey">Survey</button>
-      <button class="subtab" role="tab" aria-selected="false" aria-controls="s-interview" id="st-interview">Interview</button>
-    </div>
-
-    <div class="subpanel active" id="s-demo-run" role="tabpanel" aria-labelledby="st-demo-run">
+    <!-- Demographics Form -->
+    <div class="subpanel" id="s-demo-run" role="tabpanel" aria-labelledby="st-demo-run">
       <p>Collect this form before the session begins. It records the background, expertise, and experience that let you interpret each participant's later ratings and interview answers.</p>
       <div class="tablewrap">
         <table>
@@ -311,19 +301,34 @@
       </div>
     </div>
 
+  </section>
+
+  <!-- ================= RUN A SESSION ================= -->
+  <section class="panel" id="p-session" role="tabpanel" aria-labelledby="t-session">
+    <h2>Evaluation Session</h2>
+    <div class="sub">Repeat for each participant.</div>
+
+    <div class="subnav" role="tablist" aria-label="Session steps">
+      <button class="subtab" role="tab" aria-selected="true"  aria-controls="s-intro-run" id="st-intro-run">Study Introduction</button>
+      <button class="subtab" role="tab" aria-selected="false" aria-controls="s-during"    id="st-during">Chatbot Interaction</button>
+      <button class="subtab" role="tab" aria-selected="false" aria-controls="s-survey"    id="st-survey">Survey</button>
+      <button class="subtab" role="tab" aria-selected="false" aria-controls="s-interview" id="st-interview">Interview</button>
+    </div>
 
 <!-- Study Introduction -->
-    <div class="subpanel" id="s-intro-run" role="tabpanel" aria-labelledby="st-intro-run">    
+    <div class="subpanel active" id="s-intro-run" role="tabpanel" aria-labelledby="st-intro-run">    
       <h3>Study Introduction</h3>
-      <p>Open the session by explaining its purpose and procedure in your own words, putting the participant at ease. Cover what the study examines, the three parts they will complete, and the fact that their personal impressions matter. The following wording serves as a guide:</p>
+      <p>Open the session by explaining its purpose and procedure in your own words. Cover what the study examines, the three parts (chatbot interaction, survey, interview) they will complete, and the fact that their personal impressions matter. The following wording serves as a guide:</p>
       <blockquote>"Our study analyzes the usability of the <span class="ph">[insert organization]</span>'s <span class="ph">[insert domain]</span> chatbot, and your personal impressions are important to us. In the first part of the study, you interact with the <span class="ph">[insert domain]</span> chatbot to complete a task using its answers. Then we will ask you to fill out a short questionnaire. Finally, we will discuss your personal impressions of the chatbot."</blockquote>
-      <p>Once you have given this introduction, present the tasks.</p>
+      <p>Once you have given this introduction, present the tasks for chatbot interaction.</p>
     </div>
 
     <!-- during -->
     <div class="subpanel" id="s-during" role="tabpanel" aria-labelledby="st-during">
       <h3>Rating task-solving confidence</h3>
-      <p>Taken <strong>before</strong> the chatbot interaction, this rating records how confident the participant feels solving the task unaided. It establishes a baseline that later helps you judge how much the chatbot contributed. Collect one rating per task. Use a 5-point Likert scale, explaining that "1" marks the lowest and "5" the highest point, then ask:</p>
+      <p>
+      Taken before the chatbot interaction, let participants reflect on how confident the participant feels solving the task without aid of the chatbot. 
+      Collect one rating per task. You can use a 5-point Likert scale, explaining that "1" marks the lowest and "5" the highest point, then ask them to reason about their choice.</p>
       <blockquote>"How confident are you that you can solve the problem on your own with your current knowledge and without additional support?"</blockquote>
 
       <h3>Chatbot Interaction</h3>
@@ -333,16 +338,13 @@
       <p>Taken <strong>immediately after</strong> the two tasks are solved, this rating captures how helpful the participant found the chatbot's responses. Use a 5-point Likert scale from 1 to 5, then ask:</p>
       <blockquote>"How helpful did you find the chatbot's responses for solving the problem?"</blockquote>
       <p>Collect it separately for each task so you can relate perceived helpfulness to task difficulty.</p>
-      <div class="callout tip"><span class="k">Reference</span><p>  
-      Katherine M. Collins, Albert Q. Jiang, Simon Frieder, Lionel Wong, Miri Zilka, Umang Bhatt, Thomas Lukasiewicz, Yuhuai Wu, Joshua B. Tenenbaum, William Hart, Timothy Gowers, Wenda Li, Adrian Weller, and Mateja Jamnik. 2024. Evaluating language models for mathematics through interactions. <em>Proceedings of the National Academy of Sciences</em> 121, 24 (2024), e2318124121. <a href="https://doi.org/10.1073/pnas.2318124121" target="_blank" rel="noopener">doi:10.1073/pnas.2318124121</a>
-      </p></div>
     </div>
 
     
 
     <!-- survey -->
     <div class="subpanel" id="s-survey" role="tabpanel" aria-labelledby="st-survey">
-      <p>The survey bundles three instruments completed right after the interaction. Administer them on your survey platform in this order, before the interview begins.</p>
+      <p>The survey bundles three measures completed right after the interaction. Administer them on your survey platform in this order, before the interview begins.</p>
 
       <h3>RTLX (Perceived Mental Workload)</h3>
       <p>Measures perceived mental workload across six subscales (0–100) using a slider scale with 20 intervals. 
@@ -504,7 +506,7 @@
   <section class="panel" id="p-analyze" role="tabpanel" aria-labelledby="t-analyze">
     <h2>Analyze the data</h2>
     <div class="sub">How-to</div>
-    <p>The CEF combines quantitative survey data with qualitative interview data using an embedded mixed-methods design. </p>
+    <p>The CEP combines quantitative survey data with qualitative interview data using an embedded mixed-methods design. </p>
 
     <h3>Survey data</h3>
     <p>Read <strong>RTLX</strong> at the subscale level rather than as a single score, since some dimensions (for example physical demand) could carry little meaning in chatbot use. Compare against domain reference values.</p>
@@ -541,7 +543,7 @@
     <p>ADD LICENSE INFORMATION HERE.</p>
     <h3>How to cite</h3>
     <pre><code>@inproceedings{YOUR_KEY,
-  title     = {Applying the Chatbot Evaluation Framework (CEF): A Practitioner's Guide},
+  title     = {Applying the Chatbot Evaluation Procedure (CEP): A Practitioner's Guide},
   author    = {...},
   year      = {2025},
   booktitle = {...}
@@ -578,7 +580,7 @@
 </main>
 
 <footer>
-  <div class="wrap">Chatbot Evaluation Framework · INSERT AUTHOR</div>
+  <div class="wrap">Chatbot Evaluation Procedure · INSERT AUTHOR</div>
 </footer>
 
 <script>
