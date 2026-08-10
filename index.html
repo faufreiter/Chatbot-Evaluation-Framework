@@ -179,32 +179,31 @@
 
     <h3>Study Preparation</h3>
     <ul class="check">
-      <li><input type="checkbox" id="c1"><label for="c1">Write two short advisory tasks that reflect real work in your domain, one routine and one more complex, and involve domain experts so the scenarios are realistic.</label></li>
-      <li><input type="checkbox" id="c2"><label for="c2">Insert your specific domain in the final item of the demographics form.</label></li>
-      <li><input type="checkbox" id="c3"><label for="c3">Adapt the study introduction with your organization and domain.</label></li>
-      <li><input type="checkbox" id="c4"><label for="c4">Insert your chatbot's name, the relevant role, and domain references into the interview questions and prior-experience questions.</label></li>
-      <li><input type="checkbox" id="c5"><label for="c5">Download the CUQ calculation tool from the authors' website.</label></li>
-      <li><input type="checkbox" id="c6"><label for="c6">Set up the survey on an online platform with the three instruments in order: RTLX, CUQ, and Perceived Trustworthiness.</label></li>
-      <li><input type="checkbox" id="c7"><label for="c7">Arrange recording for each session, via video conference or in person.</label></li>
+      <li><input type="checkbox" id="c1"><label for="c1">Write two short tasks that reflect real work in your domain, one routine and one more complex, and involve domain experts so the scenarios are realistic.</label></li>
+      <li><input type="checkbox" id="c2"><label for="c2">Adapt all materials to your domain, organization, and chatbot before the first session.</label></li>
+      <li><input type="checkbox" id="c3"><label for="c3">Download the Chatbot Usability Questionnaire (CUQ) calculation tool from the authors' website.</label></li>
+      <li><input type="checkbox" id="c4"><label for="c4">Set up the survey on an online platform with the three instruments in order: Raw Task Load Index (RTLX), CUQ, and Perceived Trustworthiness.</label></li>
+      <li><input type="checkbox" id="c5"><label for="c5">Arrange recording for each session, via video conference or in person.</label></li>
+      <li><input type="checkbox" id="c6"><label for="c6">Collect the demographics form before the session begins.</label></li>
+
     </ul>
 
     <h3>Run each session</h3>
     <ul class="check">
-      <li><input type="checkbox" id="r1"><label for="r1">Collect the demographics form before the session begins.</label></li>
-      <li><input type="checkbox" id="r2"><label for="r2">Give the introduction to the study and its procedure.</label></li>
-      <li><input type="checkbox" id="r3"><label for="r3">Let the participant read both tasks.</label></li>
-      <li><input type="checkbox" id="r4"><label for="r4">Record one task-solving confidence rating per task, before the interaction.</label></li>
-      <li><input type="checkbox" id="r5"><label for="r5">Let the participant work through both tasks with the chatbot, without guidance.</label></li>
-      <li><input type="checkbox" id="r6"><label for="r6">Record one helpfulness rating per task, immediately after the interaction.</label></li>
-      <li><input type="checkbox" id="r7"><label for="r7">Administer the survey (RTLX, CUQ, Perceived Trustworthiness).</label></li>
-      <li><input type="checkbox" id="r8"><label for="r8">Conduct the semi-structured interview, including the XAI Novice Question Bank selection and questions about prior experience and chatbot use.</label></li>
+      <li><input type="checkbox" id="r1"><label for="r1">Give the introduction to the study and its procedure.</label></li>
+      <li><input type="checkbox" id="r2"><label for="r2">Let the participant read both tasks.</label></li>
+      <li><input type="checkbox" id="r3"><label for="r3">Record one task-solving confidence rating per task, before the interaction.</label></li>
+      <li><input type="checkbox" id="r4"><label for="r4">Let the participant work through both tasks with the chatbot, without guidance.</label></li>
+      <li><input type="checkbox" id="r5"><label for="r5">Record one helpfulness rating per task, immediately after the interaction.</label></li>
+      <li><input type="checkbox" id="r6"><label for="r6">Administer the survey (RTLX, CUQ, Perceived Trustworthiness).</label></li>
+      <li><input type="checkbox" id="r7"><label for="r7">Conduct the semi-structured interview, including the XAI Novice Question Bank selection and questions about prior experience and chatbot use.</label></li>
     </ul>
 
     <h3>Analyze the data</h3>
     <ul class="check">
-      <li><input type="checkbox" id="a1"><label for="a1">Read RTLX at the subscale level and compare against reference values.</label></li>
+      <li><input type="checkbox" id="a1"><label for="a1">Read RTLX across its six dimensions and compare against reference values.</label></li>
       <li><input type="checkbox" id="a2"><label for="a2">Score the CUQ from 0 to 100 with the calculation tool, and treat results comparatively.</label></li>
-      <li><input type="checkbox" id="a3"><label for="a3">Analyze Perceived Trustworthiness subscale by subscale, combining it with qualitative data where useful.</label></li>
+      <li><input type="checkbox" id="a3"><label for="a3">Analyze Perceived Trustworthiness item by item, combining it with qualitative data where useful.</label></li>
       <li><input type="checkbox" id="a4"><label for="a4">Code the interviews with thematic coding analysis in a tool such as ATLAS.ti, inductively for emerging themes and deductively for information needs.</label></li>
       <li><input type="checkbox" id="a5"><label for="a5">Analyze information about the participants' prior experience and chatbot use.</label></li>
     </ul>
@@ -335,7 +334,10 @@
       <blockquote>"How confident are you that you can solve the problem on your own with your current knowledge and without additional support?"</blockquote>
 
       <h3>Chatbot Interaction</h3>
-      <p>Have the participant work through both tasks using the chatbot, responding as they would in everyday practice. Let them interact freely without guidance, so the session reflects natural use rather than a guided demonstration. Record the interaction, and move on once the participant is satisfied with their response to each task.</p>
+      <p>Have the participant work through both tasks using the chatbot, responding as they would in everyday practice. Let them interact freely without guidance, so the session reflects natural use rather than a guided demonstration.   
+        Record the screen and audio of the session, for example through a video conferencing software or a separate audio recorder if only speech is captured. 
+        After each task, ask the participant whether the answer they received is sufficient, and move on once they confirm.
+      </p>
 
       <h3>Rating Chatbot Output</h3>
       <p>Taken <strong>immediately after</strong> the two tasks are solved, this rating captures how helpful the participant found the chatbot's responses. Use a 5-point Likert scale from 1 to 5, then ask:</p>
@@ -347,7 +349,10 @@
 
     <!-- survey -->
     <div class="subpanel" id="s-survey" role="tabpanel" aria-labelledby="st-survey">
-      <p>The survey bundles three measures completed right after the interaction. Administer them on your survey platform in this order, before the interview begins.</p>
+      <p>The survey bundles three measures completed right after the interaction. 
+        Administer them in this order, before the interview begins. 
+        In the underlying tax law chatbot study, the ratings were captured through an online survey tool; any comparable platform works.
+      </p>
 
       <h3>Raw Task Load Index (RTLX)</h3>
       <p>Measures perceived mental workload across six subscales (0–100) using a slider scale with 20 intervals. 
@@ -512,7 +517,7 @@
     <p>The CEP combines quantitative survey data with qualitative interview data using an embedded mixed-methods design. </p>
 
     <h3>Survey data</h3>
-    <p><strong>RTLX</strong> cann also be read at the subscale level rather than as a single score, since some dimensions (for example physical demand) could carry little meaning in chatbot use. Compare against domain reference values.</p>
+    <p><strong>RTLX</strong> can also be read at the subscale level rather than as a single score, since some dimensions (for example physical demand) could carry little meaning in chatbot use. Compare against domain reference values.</p>
      <div class="callout tip"><span class="k">Reference</span><p>  
         Morten Hertzum. 2021. Reference values and subscale patterns for the task load index (TLX): a meta-analytic review. <em>Ergonomics</em> 64, 7 (2021), 869–878. <a href="https://doi.org/10.1080/00140139.2021.1876927" target="_blank" rel="noopener">doi:10.1080/00140139.2021.1876927</a>
       </p></div>
