@@ -282,7 +282,7 @@
       </blockquote>
     </div>
 
-    <!-- Demographics Form -->
+<!-- Demographics Form -->
     <div class="subpanel" id="s-demo-run" role="tabpanel" aria-labelledby="st-demo-run">
       <p>
         Collect this form before the session begins, for example as a printed document, by email, or through a survey platform of your choice. 
@@ -290,18 +290,18 @@
       </p>
       <div class="tablewrap">
         <table>
-          <thead><tr><th>Question</th><th>Type</th><th>Categories</th></tr></thead>
+          <thead><tr><th>Question</th><th>Type</th></tr></thead>
           <tbody>
-            <tr><td>First Name</td><td>open-ended</td><td></td></tr>
-            <tr><td>Last Name</td><td>open-ended</td><td></td></tr>
-            <tr><td>How old are you? Please indicate your age.</td><td>open-ended</td><td></td></tr>
-            <tr><td>Which gender do you identify with?</td><td>categorical</td><td>"male", "female", "non-binary", "other gender", "don't want to answer"</td></tr>
-            <tr><td>If you selected "other gender" in the previous question, please specify below.</td><td>open-ended</td><td></td></tr>
-            <tr><td>What is your highest educational qualification?</td><td>categorical</td><td>"No compulsory school certificate", "Compulsory school certificate", "High school diploma", "University of Applied Sciences", "University", "Master craftsman's diploma", "My degree is not listed."</td></tr>
-            <tr><td>In which subject area or professional field do you have expertise?</td><td>open-ended</td><td></td></tr>
-            <tr><td>What is your job title?</td><td>open-ended</td><td></td></tr>
-            <tr><td>How many years of work experience do you have in your field?</td><td>open-ended</td><td></td></tr>
-            <tr><td>How many years of work experience do you have in the field of <span class="ph">[insert specific domain area]</span>?</td><td>open-ended</td><td></td></tr>
+            <tr><td>First Name</td><td>character-limited text field</td></tr>
+            <tr><td>Last Name</td><td>character-limited text field</td></tr>
+            <tr><td>How old are you? Please indicate your age.</td><td>numeric field, in years</td></tr>
+            <tr><td>Which gender do you identify with?</td><td>categorical selection, including a self-describe option and an option to decline</td></tr>
+            <tr><td>If you selected "other gender" in the previous question, please specify below.</td><td>character-limited text field, conditional on the previous answer</td></tr>
+            <tr><td>What is your highest educational qualification?</td><td>categorical selection of country-specific qualification levels</td></tr>
+            <tr><td>In which subject area or professional field do you have expertise?</td><td>character-limited text field</td></tr>
+            <tr><td>What is your job title?</td><td>character-limited text field</td></tr>
+            <tr><td>How many years of work experience do you have in your field?</td><td>numeric field, in years</td></tr>
+            <tr><td>How many years of work experience do you have in the field of <span class="ph">[insert specific domain area]</span>?</td><td>numeric field, in years</td></tr>
           </tbody>
         </table>
       </div>
@@ -555,7 +555,7 @@
     <h3>Downloads</h3>
     <div class="tablewrap">
       <table>
-        <caption>Study materials, available as PDF, Word and Excel. Links open in a new tab.</caption>
+        <caption>Study materials, available as PDF, Word and Excel. PDF documents open in a new tab.</caption>
         <thead>
           <tr>
             <th scope="col">Phase</th>
@@ -578,6 +578,11 @@
             <td>Study Preparation</td>
             <th scope="row">Sample Task 2</th>
             <td><a href="data/extra_material/sample_task_2.docx" target="_blank" rel="noopener">Word<span class="visually-hidden">: Sample Task 2</span></a></td>
+          </tr>
+          <tr>
+            <td>Study Preparation</td>
+            <th scope="row">Demographics Form</th>
+            <td><a href="data/extra_material/demographics_form.xlsx" target="_blank" rel="noopener">Word<span class="visually-hidden">: Sample Task 2</span></a></td>
           </tr>
           <tr>
             <td>Evaluation Session</td>
