@@ -87,6 +87,7 @@
   td.id,th.id{font-family:var(--mono);font-size:12.5px;color:var(--accent);width:1%;white-space:nowrap}
   caption{text-align:left;padding:11px 14px;font-size:13px;color:var(--muted);border-bottom:1px solid var(--line)}
   .dl-meta{font-family:var(--mono);font-size:12.5px;color:var(--muted);white-space:nowrap;margin-left:8px}
+  tbody th{font-weight:400}
 
   /* callouts */
   .callout{border-radius:10px;padding:14px 18px;margin:0 0 18px;font-size:14.5px;max-width:70ch}
@@ -178,7 +179,7 @@
   <section class="panel" id="p-checklist" role="tabpanel" aria-labelledby="t-checklist">
     <h2>Checklist</h2>
     <div class="sub">Prepare once · run per participant · analyze</div>
-    <div class="callout tip"><span class="k">Download</span><p><a href="data/extra_material/checklist_guide.pdf" target="_blank" rel="noopener">Download the checklist as a PDF file.</a></p></div>
+    <div class="callout tip"><span class="k">Download</span><p><a href="data/extra_material/checklist_guide.pdf" target="_blank" rel="noopener">Download the checklist as a PDF file. Link opens in a new tab.</a></p></div>
 
     <h3>Study Preparation</h3>
     <ul class="check">
@@ -554,33 +555,64 @@
     <h3>Downloads</h3>
     <div class="tablewrap">
       <table>
-        <caption>Study materials, available as PDF and Excel. Links open in a new tab.</caption>
+        <caption>Study materials, available as PDF, Word and Excel. Links open in a new tab.</caption>
         <thead>
           <tr>
+            <th scope="col">Phase</th>
             <th scope="col">Material</th>
-            <th scope="col">PDF</th>
-            <th scope="col">Excel</th>
+            <th scope="col">Document Type</th>
           </tr>
         </thead>
         <tbody>
           <tr>
-            <th scope="row">Checklist guide</th>
-            <td><a href="data/extra_material/checklist_guide.pdf" target="_blank" rel="noopener">PDF<span class="visually-hidden">: Checklist guide</span></a><span class="dl-meta">240 KB</span></td>
-            <td><a href="data/extra_material/checklist_guide.xlsx" target="_blank" rel="noopener">Excel<span class="visually-hidden">: Checklist guide</span></a><span class="dl-meta">36 KB</span></td>
+            <td>Study Preparation</td>
+            <th scope="row">Checklist</th>
+            <td><a href="data/extra_material/checklist_guide.pdf" target="_blank" rel="noopener">PDF<span class="visually-hidden">: Checklist</span></a></td>
           </tr>
           <tr>
-            <th scope="row">Checklist guide</th>
-            <td><a href="data/extra_material/checklist_guide.pdf" target="_blank" rel="noopener">PDF<span class="visually-hidden">: Checklist guide</span></a><span class="dl-meta">240 KB</span></td>
-            <td><a href="data/extra_material/checklist_guide.xlsx" target="_blank" rel="noopener">Excel<span class="visually-hidden">: Checklist guide</span></a><span class="dl-meta">36 KB</span></td>
+            <td>Study Preparation</td>
+            <th scope="row">Sample Task 1</th>
+            <td><a href="data/extra_material/sample_task_1.docx" target="_blank" rel="noopener">Word<span class="visually-hidden">: Sample Task 1</span></a></td>
           </tr>
-          
-          
-          
-          
           <tr>
+            <td>Study Preparation</td>
+            <th scope="row">Sample Task 2</th>
+            <td><a href="data/extra_material/sample_task_2.docx" target="_blank" rel="noopener">Word<span class="visually-hidden">: Sample Task 2</span></a></td>
+          </tr>
+          <tr>
+            <td>Evaluation Session</td>
+            <th scope="row">Task-Solving Confidence and Chatbot Output Rating</th>
+            <td><a href="data/extra_material/task_solving_output_rating.xlsx" target="_blank" rel="noopener">Excel<span class="visually-hidden">: Task-Solving Confidence and Chatbot Output Rating</span></a></td>
+          </tr>
+          <tr>
+            <td>Evaluation Session</td>
+            <th scope="row">Raw Task Load Index (RTLX)</th>
+            <td><a href="data/extra_material/raw_task_load_index.xlsx" target="_blank" rel="noopener">Excel<span class="visually-hidden">: Raw Task Load Index</span></a></td>
+          </tr>
+          <tr>
+            <td>Evaluation Session</td>
+            <th scope="row">Chatbot Usability Questionnaire (CUQ)</th>
+            <td><a href="data/extra_material/cuq_questions.xlsx" target="_blank" rel="noopener">Excel<span class="visually-hidden">: Chatbot Usability Questionnaire</span></a></td>
+          </tr>
+          <tr>
+            <td>Evaluation Session</td>
+            <th scope="row">Perceived Trustworthiness</th>
+            <td><a href="data/extra_material/perceived_trustworthiness.xlsx" target="_blank" rel="noopener">Excel<span class="visually-hidden">: Perceived Trustworthiness</span></a></td>
+          </tr>
+          <tr>
+            <td>Evaluation Session</td>
+            <th scope="row">Interview Questions</th>
+            <td><a href="data/extra_material/interview_questions.xlsx" target="_blank" rel="noopener">Excel<span class="visually-hidden">: Interview Questions</span></a></td>
+          </tr>
+          <tr>
+            <td>Evaluation Session</td>
             <th scope="row">Adapted XAI Novice Question Bank</th>
-            <td><a href="data/extra_material/xai_question_bank.pdf" target="_blank" rel="noopener">PDF<span class="visually-hidden">: Adapted XAI Novice Question Bank</span></a><span class="dl-meta">180 KB</span></td>
-            <td><span class="dl-meta">Not available</span></td>
+            <td><a href="data/extra_material/xainqb.xlsx" target="_blank" rel="noopener">Excel<span class="visually-hidden">: Adapted XAI Novice Question Bank</span></a></td>
+          </tr>
+          <tr>
+            <td>Evaluation Session</td>
+            <th scope="row">Prior Experience and Chatbot Use</th>
+            <td><a href="data/extra_material/experience_use.xlsx" target="_blank" rel="noopener">Excel<span class="visually-hidden">: Prior Experience and Chatbot Use</span></a></td>
           </tr>
         </tbody>
       </table>
