@@ -226,7 +226,7 @@
 
     <div class="subpanel active" id="s-wording" role="tabpanel" aria-labelledby="st-wording">
       <p>Before running any sessions, go through the survey scales and interview questions and adapt the wording to your own chatbot and domain. A few details always need to be filled in: your chatbot's name, the professional role of your participants, and the specific domain the chatbot supports.</p>
-      <p>Most importantly, the <strong>interview questions</strong> should be tailored to the specific characteristics of the chatbot being studied.</p>
+      <p>Most importantly, the <strong>interview questions</strong> should be tailored to the specific characteristics of the chatbot being studied. Useful materials are available on the <a href="#cite" class="tablink" data-tab="t-cite">Use &amp; cite</a> tab.</p>
       <div class="callout tip"><span class="k">Tip</span><p>Every place that needs a change is marked with a highlighted placeholder like <span class="ph">[insert domain]</span>, inside the <strong>"Evaluation Session"</strong> tabs. Work through those tabs once before your first session and replace every marked placeholder.</p></div>
     </div>
 
@@ -702,6 +702,18 @@
     const list=target.closest('[role="tablist"]');
     activate(Array.from(list.querySelectorAll('[role="tab"]')),target,list);
   }
+
+  // in-page links that switch to another primary tab
+  document.addEventListener('click',e=>{
+    const link=e.target.closest('.tablink');
+    if(!link)return;
+    const tab=document.getElementById(link.dataset.tab);
+    if(!tab)return;
+    e.preventDefault();
+    tab.click();
+    tab.focus();
+    window.scrollTo({top:0});
+  });
 </script>
 </body>
 </html>
