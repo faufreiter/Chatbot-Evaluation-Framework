@@ -36,6 +36,7 @@
   *{box-sizing:border-box;margin:0;padding:0}
   html{scroll-behavior:smooth}
   body{background:var(--bg);color:var(--ink);font-family:var(--sans);line-height:1.62;-webkit-font-smoothing:antialiased}
+  .visually-hidden{position:absolute;width:1px;height:1px;margin:-1px;padding:0;overflow:hidden;clip-path:inset(50%);white-space:nowrap}
   .wrap{max-width:960px;margin:0 auto;padding:0 24px}
 
   header{border-bottom:1px solid var(--line);background:var(--surface)}
@@ -84,6 +85,8 @@
   thead th{background:#F0F2F5;font-family:var(--sans);font-weight:600;color:var(--primary);font-size:13px}
   tbody tr:last-child td{border-bottom:none}
   td.id,th.id{font-family:var(--mono);font-size:12.5px;color:var(--accent);width:1%;white-space:nowrap}
+  caption{text-align:left;padding:11px 14px;font-size:13px;color:var(--muted);border-bottom:1px solid var(--line)}
+  .dl-meta{font-family:var(--mono);font-size:12.5px;color:var(--muted);white-space:nowrap;margin-left:8px}
 
   /* callouts */
   .callout{border-radius:10px;padding:14px 18px;margin:0 0 18px;font-size:14.5px;max-width:70ch}
@@ -547,39 +550,76 @@
   <section class="panel" id="p-cite" role="tabpanel" aria-labelledby="t-cite">
     <h2>Use &amp; cite</h2>
     <div class="sub">References and material for practitioners and researchers</div>
-    <h3>License</h3>
-    <p>ADD LICENSE INFORMATION HERE.</p>
-    <h3>How to cite</h3>
-    <pre><code>@inproceedings{YOUR_KEY,
-  title     = {Applying the Chatbot Evaluation Procedure (CEP): A Practitioner's Guide},
-  author    = {...},
-  year      = {2025},
-  booktitle = {...}
-}</code></pre>
+    
+    <h3>Downloads</h3>
+    <div class="tablewrap">
+      <table>
+        <caption>Study materials, available as PDF and Excel. Links open in a new tab.</caption>
+        <thead>
+          <tr>
+            <th scope="col">Material</th>
+            <th scope="col">PDF</th>
+            <th scope="col">Excel</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th scope="row">Checklist guide</th>
+            <td><a href="data/extra_material/checklist_guide.pdf" target="_blank" rel="noopener">PDF<span class="visually-hidden">: Checklist guide</span></a><span class="dl-meta">240 KB</span></td>
+            <td><a href="data/extra_material/checklist_guide.xlsx" target="_blank" rel="noopener">Excel<span class="visually-hidden">: Checklist guide</span></a><span class="dl-meta">36 KB</span></td>
+          </tr>
+          <tr>
+            <th scope="row">Checklist guide</th>
+            <td><a href="data/extra_material/checklist_guide.pdf" target="_blank" rel="noopener">PDF<span class="visually-hidden">: Checklist guide</span></a><span class="dl-meta">240 KB</span></td>
+            <td><a href="data/extra_material/checklist_guide.xlsx" target="_blank" rel="noopener">Excel<span class="visually-hidden">: Checklist guide</span></a><span class="dl-meta">36 KB</span></td>
+          </tr>
+          
+          
+          
+          
+          <tr>
+            <th scope="row">Adapted XAI Novice Question Bank</th>
+            <td><a href="data/extra_material/xai_question_bank.pdf" target="_blank" rel="noopener">PDF<span class="visually-hidden">: Adapted XAI Novice Question Bank</span></a><span class="dl-meta">180 KB</span></td>
+            <td><span class="dl-meta">Not available</span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
 
-    <h3>Tools and resources</h3>
+
+    <h3>Tools</h3>
     <ul>
       <li><strong>CUQ calculation tool</strong> - Have a look at the <a href="https://www.ulster.ac.uk/research/topic/computer-science/artificial-intelligence/projects/cuq" target="_blank" rel="noopener">Ulster University CUQ project page</a>.</li>
       <li><strong>ATLAS.ti</strong> - <a href="https://atlasti.com/" target="_blank" rel="noopener">Qualitative coding software </a> for the thematic analysis.</li>
-      <li><strong>Adapted XAI Novice Question Bank</strong> - Add a download link.</li>
-      <li><strong>Checklist</strong> - <a href="data/extra_material/checklist_guide.pdf" target="_blank" rel="noopener">Download the checklist as a PDF file.</a></li>
     </ul>
 
-  <h3>References</h3>
-    <ul>
-      <li>ATLAS.ti Scientific Software Development GmbH. 2025. <em>ATLAS.ti | Die #1 Software für qualitative Datenanalysen</em>. <a href="https://atlasti.com/de" target="_blank" rel="noopener">atlasti.com/de</a></li>
-      <li>Piercosma Bisconti, Letizia Aquilino, Antonella Marchetti, and Daniele Nardi. 2025. <em>A Formal Account of AI Trustworthiness: Connecting Intrinsic and Perceived Trustworthiness.</em> AAAI Press, 131–140.</li>
-      <li>Katherine M. Collins, Albert Q. Jiang, Simon Frieder, Lionel Wong, Miri Zilka, Umang Bhatt, Thomas Lukasiewicz, Yuhuai Wu, Joshua B. Tenenbaum, William Hart, Timothy Gowers, Wenda Li, Adrian Weller, and Mateja Jamnik. 2024. Evaluating language models for mathematics through interactions. <em>Proceedings of the National Academy of Sciences</em> 121, 24 (2024), e2318124121. <a href="https://doi.org/10.1073/pnas.2318124121" target="_blank" rel="noopener">doi:10.1073/pnas.2318124121</a></li>
-      <li>John W. Creswell and Vicki L. Plano Clark. 2017. <em>Designing and Conducting Mixed Methods Research.</em> SAGE Publications, United States.</li>
-      <li>Sandra G. Hart. 2006. Nasa-Task Load Index (NASA-TLX); 20 Years Later. <em>Proceedings of the Human Factors and Ergonomics Society Annual Meeting</em> 50, 9 (2006), 904–908. <a href="https://doi.org/10.1177/154193120605000909" target="_blank" rel="noopener">doi:10.1177/154193120605000909</a></li>
-      <li>Morten Hertzum. 2021. Reference values and subscale patterns for the task load index (TLX): a meta-analytic review. <em>Ergonomics</em> 64, 7 (2021), 869–878. <a href="https://doi.org/10.1080/00140139.2021.1876927" target="_blank" rel="noopener">doi:10.1080/00140139.2021.1876927</a></li>
-      <li>Samuel Holmes, Raymond Bond, Anne Moorhead, Jane Zheng, Vivien Coates, and Michael McTear. 2023. Towards Validating a Chatbot Usability Scale. In <em>Design, User Experience, and Usability</em>, Aaron Marcus, Elizabeth Rosenzweig, and Marcelo M. Soares (Eds.). Springer Nature Switzerland, Cham, 321–339.</li>
-      <li>Samuel Holmes, Anne Moorhead, Raymond Bond, Huiru Zheng, Vivien Coates, and Michael McTear. 2019. Usability testing of a healthcare chatbot: Can we use conventional methods to assess conversational user interfaces?. In <em>Proceedings of the 31st European Conference on Cognitive Ergonomics</em> (Belfast, United Kingdom) (ECCE '19). Association for Computing Machinery, New York, NY, USA, 207–214. <a href="https://doi.org/10.1145/3335082.3335094" target="_blank" rel="noopener">doi:10.1145/3335082.3335094</a></li>
-      <li>NASA Ames Research Center. 1988. <em>NASA Task Load Index (TLX) Version 1.0 Paper and Pencil Package.</em> Technical Report. NASA Ames Research Center, Moffett Field, California. <a href="https://humansystems.arc.nasa.gov/groups/tlx/downloads/TLX_pappen_manual.pdf" target="_blank" rel="noopener">humansystems.arc.nasa.gov</a></li>
-      <li>Colin Robson. 2024. <em>Real World Research: A Resource for Users of Social Research Methods in Applied Settings</em> (5th ed.). Wiley, Hoboken, NJ.</li>
-      <li>Timothée Schmude, Laura Koesten, Torsten Möller, and Sebastian Tschiatschek. 2025. Information that matters: Exploring information needs of people affected by algorithmic decisions. <em>International Journal of Human-Computer Studies</em> 193 (2025), 103380. <a href="https://doi.org/10.1016/j.ijhcs.2024.103380" target="_blank" rel="noopener">doi:10.1016/j.ijhcs.2024.103380</a></li>
-      <li>Ulster University. 2025. <em>The Chatbot Usability Questionnaire (CUQ).</em> <a href="https://www.ulster.ac.uk/research/topic/computer-science/artificial-intelligence/projects/cuq" target="_blank" rel="noopener">ulster.ac.uk</a></li>
-    </ul>
+    <h3>How to cite</h3>
+    <pre><code>@inproceedings{YOUR_KEY,
+      title     = {Applying the Chatbot Evaluation Procedure (CEP): A Practitioner's Guide},
+      author    = {...},
+      year      = {2025},
+      booktitle = {...}
+    }</code></pre>
+
+    <h3>License</h3>
+    <p>ADD LICENSE INFORMATION HERE.</p>
+
+
+    <h3>References</h3>
+      <ul>
+        <li>ATLAS.ti Scientific Software Development GmbH. 2025. <em>ATLAS.ti | Die #1 Software für qualitative Datenanalysen</em>. <a href="https://atlasti.com/de" target="_blank" rel="noopener">atlasti.com/de</a></li>
+        <li>Piercosma Bisconti, Letizia Aquilino, Antonella Marchetti, and Daniele Nardi. 2025. <em>A Formal Account of AI Trustworthiness: Connecting Intrinsic and Perceived Trustworthiness.</em> AAAI Press, 131–140.</li>
+        <li>Katherine M. Collins, Albert Q. Jiang, Simon Frieder, Lionel Wong, Miri Zilka, Umang Bhatt, Thomas Lukasiewicz, Yuhuai Wu, Joshua B. Tenenbaum, William Hart, Timothy Gowers, Wenda Li, Adrian Weller, and Mateja Jamnik. 2024. Evaluating language models for mathematics through interactions. <em>Proceedings of the National Academy of Sciences</em> 121, 24 (2024), e2318124121. <a href="https://doi.org/10.1073/pnas.2318124121" target="_blank" rel="noopener">doi:10.1073/pnas.2318124121</a></li>
+        <li>John W. Creswell and Vicki L. Plano Clark. 2017. <em>Designing and Conducting Mixed Methods Research.</em> SAGE Publications, United States.</li>
+        <li>Sandra G. Hart. 2006. Nasa-Task Load Index (NASA-TLX); 20 Years Later. <em>Proceedings of the Human Factors and Ergonomics Society Annual Meeting</em> 50, 9 (2006), 904–908. <a href="https://doi.org/10.1177/154193120605000909" target="_blank" rel="noopener">doi:10.1177/154193120605000909</a></li>
+        <li>Morten Hertzum. 2021. Reference values and subscale patterns for the task load index (TLX): a meta-analytic review. <em>Ergonomics</em> 64, 7 (2021), 869–878. <a href="https://doi.org/10.1080/00140139.2021.1876927" target="_blank" rel="noopener">doi:10.1080/00140139.2021.1876927</a></li>
+        <li>Samuel Holmes, Raymond Bond, Anne Moorhead, Jane Zheng, Vivien Coates, and Michael McTear. 2023. Towards Validating a Chatbot Usability Scale. In <em>Design, User Experience, and Usability</em>, Aaron Marcus, Elizabeth Rosenzweig, and Marcelo M. Soares (Eds.). Springer Nature Switzerland, Cham, 321–339.</li>
+        <li>Samuel Holmes, Anne Moorhead, Raymond Bond, Huiru Zheng, Vivien Coates, and Michael McTear. 2019. Usability testing of a healthcare chatbot: Can we use conventional methods to assess conversational user interfaces?. In <em>Proceedings of the 31st European Conference on Cognitive Ergonomics</em> (Belfast, United Kingdom) (ECCE '19). Association for Computing Machinery, New York, NY, USA, 207–214. <a href="https://doi.org/10.1145/3335082.3335094" target="_blank" rel="noopener">doi:10.1145/3335082.3335094</a></li>
+        <li>NASA Ames Research Center. 1988. <em>NASA Task Load Index (TLX) Version 1.0 Paper and Pencil Package.</em> Technical Report. NASA Ames Research Center, Moffett Field, California. <a href="https://humansystems.arc.nasa.gov/groups/tlx/downloads/TLX_pappen_manual.pdf" target="_blank" rel="noopener">humansystems.arc.nasa.gov</a></li>
+        <li>Colin Robson. 2024. <em>Real World Research: A Resource for Users of Social Research Methods in Applied Settings</em> (5th ed.). Wiley, Hoboken, NJ.</li>
+        <li>Timothée Schmude, Laura Koesten, Torsten Möller, and Sebastian Tschiatschek. 2025. Information that matters: Exploring information needs of people affected by algorithmic decisions. <em>International Journal of Human-Computer Studies</em> 193 (2025), 103380. <a href="https://doi.org/10.1016/j.ijhcs.2024.103380" target="_blank" rel="noopener">doi:10.1016/j.ijhcs.2024.103380</a></li>
+        <li>Ulster University. 2025. <em>The Chatbot Usability Questionnaire (CUQ).</em> <a href="https://www.ulster.ac.uk/research/topic/computer-science/artificial-intelligence/projects/cuq" target="_blank" rel="noopener">ulster.ac.uk</a></li>
+      </ul>
   </section>
 
 
