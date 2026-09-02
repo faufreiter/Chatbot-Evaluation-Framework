@@ -140,8 +140,8 @@
     <div class="rail-inner" role="tablist">
       <button class="tab" role="tab" aria-selected="true"  aria-controls="p-overview"  id="t-overview"><span class="num">!</span>Overview</button>
       <button class="tab" role="tab" aria-selected="false" aria-controls="p-prepare"   id="t-prepare"><span class="num">1</span>Study Preparation</button>
-      <button class="tab" role="tab" aria-selected="false" aria-controls="p-session"   id="t-session"><span class="num">2</span>Evaluation Session</button>
-      <button class="tab" role="tab" aria-selected="false" aria-controls="p-analyze"   id="t-analyze"><span class="num">3</span>Analyze the data</button>
+      <button class="tab" role="tab" aria-selected="false" aria-controls="p-session"   id="t-session"><span class="num">2</span>Study Implementation</button>
+      <button class="tab" role="tab" aria-selected="false" aria-controls="p-analyze"   id="t-analyze"><span class="num">3</span>Data Analysis</button>
       <button class="tab" role="tab" aria-selected="false" aria-controls="p-checklist" id="t-checklist"><span class="num">✓</span>Checklist</button>
       <button class="tab" role="tab" aria-selected="false" aria-controls="p-cite"      id="t-cite"><span class="num">+</span>Use &amp; cite</button>
 
@@ -169,9 +169,9 @@
     </p>
 
     <figure>
-      <img src="data/images/study_procedure_ver_3.png" alt="Study procedure" onerror="this.style.display='none';this.nextElementSibling.style.display='block'">
+      <img src="data/images/study_procedure_ver_3.png" alt="CEP study design" onerror="this.style.display='none';this.nextElementSibling.style.display='block'">
       <div class="imgfallback">Study procedure diagram — add <code>assets/images/study-procedure.png</code></div>
-      <figcaption>Study procedure.</figcaption>
+      <figcaption>CEP study design.</figcaption>
     </figure>
   </section>
 
@@ -192,7 +192,7 @@
 
     </ul>
 
-    <h3>Run each session</h3>
+    <h3>Study Implementation</h3>
     <ul class="check">
       <li><input type="checkbox" id="r1"><label for="r1">Give the introduction to the study and its procedure.</label></li>
       <li><input type="checkbox" id="r2"><label for="r2">Let the participant read both tasks.</label></li>
@@ -203,7 +203,7 @@
       <li><input type="checkbox" id="r7"><label for="r7">Conduct the semi-structured interview, including the XAI Novice Question Bank selection and questions about prior experience and chatbot use.</label></li>
     </ul>
 
-    <h3>Analyze the data</h3>
+    <h3>Data Analysis</h3>
     <ul class="check">
       <li><input type="checkbox" id="a1"><label for="a1">Read RTLX across its six dimensions and compare against reference values.</label></li>
       <li><input type="checkbox" id="a2"><label for="a2">Score the CUQ from 0 to 100 with the calculation tool, and treat results comparatively.</label></li>
@@ -227,7 +227,7 @@
     <div class="subpanel active" id="s-wording" role="tabpanel" aria-labelledby="st-wording">
       <p>Before running any sessions, go through the survey scales and interview questions and adapt the wording to your own chatbot and domain. A few details always need to be filled in: your chatbot's name, the professional role of your participants, and the specific domain the chatbot supports.</p>
       <p>Most importantly, the <strong>interview questions</strong> should be tailored to the specific characteristics of the chatbot being studied. Useful materials are available on the <a href="#cite" class="tablink" data-tab="t-cite">Use &amp; cite</a> tab.</p>
-      <div class="callout tip"><span class="k">Tip</span><p>Every place that needs a change is marked with a highlighted placeholder like <span class="ph">[insert domain]</span>, inside the <strong>"Evaluation Session"</strong> tabs. Work through those tabs once before your first session and replace every marked placeholder.</p></div>
+      <div class="callout tip"><span class="k">Tip</span><p>Every place that needs a change is marked with a highlighted placeholder like <span class="ph">[insert domain]</span>, inside the <strong>"Study Implementation"</strong> tabs. Work through those tabs once before your first session and replace every marked placeholder.</p></div>
     </div>
 
 
@@ -235,7 +235,7 @@
       <p>
         Each evaluation sesssion is built on having a task-based interaction at the beginning of each session. 
         We recommend designing two tasks for chatbot interaction with different levels of difficulty. 
-        Replace the email content and the chatbot name (<strong>XY bot</strong>) with scenarios from your own domain.
+        Replace the email content and the chatbot name (<strong>XY bot</strong>) with scenarios from your own domain. (See Sample Tasks 1 and 2.)
       </p>
       <div class="callout tip"><span class="k">Tip</span><p>Involve domain experts when creating the tasks, so the examples are realistic and reflect what users of the chatbot actually encounter in their everyday work.</p></div>
       <p>
@@ -311,7 +311,7 @@
 
   <!-- ================= RUN A SESSION ================= -->
   <section class="panel" id="p-session" role="tabpanel" aria-labelledby="t-session">
-    <h2>Evaluation Session</h2>
+    <h2>Study Implementation</h2>
     <div class="sub">Repeat for each participant.</div>
 
     <div class="subnav" role="tablist" aria-label="Session steps">
@@ -338,7 +338,7 @@
       <blockquote>"How confident are you that you can solve the problem on your own with your current knowledge and without additional support?"</blockquote>
 
       <h3>Chatbot Interaction</h3>
-      <p>Have the participant work through both tasks using the chatbot, responding as they would in everyday practice. Let them interact freely without guidance, so the session reflects natural use rather than a guided demonstration.   
+      <p>Have the participant work through <strong>both tasks</strong> using the chatbot, responding as they would in everyday practice. Let them interact freely without guidance, so the session reflects natural use rather than a guided demonstration.   
         Record the screen and audio of the session, for example through a video conferencing software or a separate audio recorder if only speech is captured. 
         After each task, ask the participant whether the answer they received is sufficient, and move on once they confirm.
       </p>
@@ -353,15 +353,15 @@
 
     <!-- survey -->
     <div class="subpanel" id="s-survey" role="tabpanel" aria-labelledby="st-survey">
-      <p>The survey bundles three measures completed right after the interaction. 
-        Administer them in this order, before the interview begins. 
+      <p>The survey bundles three measures completed right after the interaction with the chatbot. 
+        Administer them in this order, before proceeding to the interview questions. 
         In the underlying tax law chatbot study, the ratings were captured through an online survey tool; any comparable platform works.
       </p>
 
       <h3>Raw Task Load Index (RTLX)</h3>
       <p>Measures perceived mental workload across six subscales (0–100) using a slider scale with 20 intervals. 
         An overall score can be obtained by averaging the six ratings, but for chatbot evaluation it is more informative to read the subscales individually, since dimensions such as physical demand may be affected by the study set-up. 
-        Compare against published reference values.</p>
+        Compare against published reference values. (See reference below.)</p>
       <div class="tablewrap">
         <table>
           <thead><tr><th>Subscale</th><th>Endpoints</th><th>Description</th></tr></thead>
@@ -375,7 +375,7 @@
           </tbody>
         </table>
       </div>
-      <div class="callout tip"><span class="k">Reference</span><p>  
+      <div class="callout tip"><span class="k">References for scales and values</span><p>  
         Sandra G. Hart. 2006. Nasa-Task Load Index (NASA-TLX); 20 Years Later. <em>Proceedings of the Human Factors and Ergonomics Society Annual Meeting</em> 50, 9 (2006), 904–908. <a href="https://doi.org/10.1177/154193120605000909" target="_blank" rel="noopener">doi:10.1177/154193120605000909</a>
         <br><br>
         Morten Hertzum. 2021. Reference values and subscale patterns for the task load index (TLX): a meta-analytic review. <em>Ergonomics</em> 64, 7 (2021), 869–878. <a href="https://doi.org/10.1080/00140139.2021.1876927" target="_blank" rel="noopener">doi:10.1080/00140139.2021.1876927</a>
@@ -516,7 +516,7 @@
 
   <!-- ================= ANALYZE ================= -->
   <section class="panel" id="p-analyze" role="tabpanel" aria-labelledby="t-analyze">
-    <h2>Analyze the data</h2>
+    <h2>Data Analysis</h2>
     <div class="sub">How-to</div>
     <p>The CEP combines quantitative survey data with qualitative interview data using an embedded mixed-methods design. </p>
 
@@ -541,9 +541,9 @@
     </ol>
     <div class="callout tip"><span class="k">Tip</span><p>Use a qualitative coding software such as ATLAS.ti to manage the process. After coding, constructing networks helps you gain insights into the interview data.</p></div>
     <figure>
-      <img src="data/images/areas_of_application_network_LIGHT.png" alt="Thematic Network: Areas of Application" onerror="this.style.display='none';this.nextElementSibling.style.display='block'">
+      <img src="data/images/Chatbot_evaluation_network_LIGHT.png" alt="Illustration of a thematic network." onerror="this.style.display='none';this.nextElementSibling.style.display='block'">
       <div class="imgfallback">Thematic network figure — add <code>assets/images/thematic-network.png</code></div>
-      <figcaption>Thematic Network: Areas of Application.</figcaption>
+      <figcaption>Illustration of a thematic network.</figcaption>
     </figure>
   </section>
 
@@ -585,37 +585,37 @@
             <td><a href="data/extra_material/demographics_form.xlsx" target="_blank" rel="noopener">Word<span class="visually-hidden">: Sample Task 2</span></a></td>
           </tr>
           <tr>
-            <td>Evaluation Session</td>
+            <td>Study Implementation</td>
             <th scope="row">Task-Solving Confidence and Chatbot Output Rating</th>
             <td><a href="data/extra_material/task_solving_output_rating.xlsx" target="_blank" rel="noopener">Excel<span class="visually-hidden">: Task-Solving Confidence and Chatbot Output Rating</span></a></td>
           </tr>
           <tr>
-            <td>Evaluation Session</td>
+            <td>Study Implementation</td>
             <th scope="row">Raw Task Load Index (RTLX)</th>
             <td><a href="data/extra_material/raw_task_load_index.xlsx" target="_blank" rel="noopener">Excel<span class="visually-hidden">: Raw Task Load Index</span></a></td>
           </tr>
           <tr>
-            <td>Evaluation Session</td>
+            <td>Study Implementation</td>
             <th scope="row">Chatbot Usability Questionnaire (CUQ)</th>
             <td><a href="data/extra_material/cuq_questions.xlsx" target="_blank" rel="noopener">Excel<span class="visually-hidden">: Chatbot Usability Questionnaire</span></a></td>
           </tr>
           <tr>
-            <td>Evaluation Session</td>
+            <td>Study Implementation</td>
             <th scope="row">Perceived Trustworthiness</th>
             <td><a href="data/extra_material/perceived_trustworthiness.xlsx" target="_blank" rel="noopener">Excel<span class="visually-hidden">: Perceived Trustworthiness</span></a></td>
           </tr>
           <tr>
-            <td>Evaluation Session</td>
+            <td>Study Implementation</td>
             <th scope="row">Interview Questions</th>
             <td><a href="data/extra_material/interview_questions.xlsx" target="_blank" rel="noopener">Excel<span class="visually-hidden">: Interview Questions</span></a></td>
           </tr>
           <tr>
-            <td>Evaluation Session</td>
+            <td>Study Implementation</td>
             <th scope="row">Adapted XAI Novice Question Bank</th>
             <td><a href="data/extra_material/xainqb.xlsx" target="_blank" rel="noopener">Excel<span class="visually-hidden">: Adapted XAI Novice Question Bank</span></a></td>
           </tr>
           <tr>
-            <td>Evaluation Session</td>
+            <td>Study Implementation</td>
             <th scope="row">Prior Experience and Chatbot Use</th>
             <td><a href="data/extra_material/experience_use.xlsx" target="_blank" rel="noopener">Excel<span class="visually-hidden">: Prior Experience and Chatbot Use</span></a></td>
           </tr>
